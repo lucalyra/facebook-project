@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles/newStyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script type="text/javascript" src="js/js1.js"></script>
+    <title>Facebook Project</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header-wrap">
+            <div class="logo-search">
+                <i class="fab fa-facebook-square"></i>
+                <div class="search-sec">
+                    <input class="header-search" type="text" placeholder="Search"> </input>
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>  
+            <div class="user-options"> 
+                <div class="user social-box">
+                    <img class="header-profile" src="pic/profile.jpg" alt="Lucas Lyra Profile">
+                    <p>Lucas</p>
+                    <span class="title"> Profile </span>
+                </div>
+                <span class="line">|</span>
+                <p class="home-button">Home</p>
+                <span class="line">|</span>
+                <div class="user-social">
+                    <div class="friends-request social-box">
+                        <i class="fas fa-users"></i>
+                        <span class="title"> Friend Requests </span>
+                    </div>
+                    <div class="messages social-box">
+                        <i class="fab fa-facebook-messenger"></i>
+                        <span class="title"> Messages </span>
+                    </div>
+                    <div class="notifications social-box">
+                        <i class="far fa-dot-circle"></i> 
+                        <span class="title"> Notifications </span>
+                    </div>
+                </div>
+                <span class="line">|</span>
+                <div class="user-other">    
+                    <div class="help-header social-box">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="title">Help</span>
+                    </div>
+                    <div class="more-options social-box">
+                        <i class="fas fa-sort-down"></i>
+                        <span class="title">More..</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-media-cont">
+                <div class="header-media-button media-window">
+                    <i class="fas fa-window-maximize header-media"></i>
+                </div>
+                <div class="header-media-button media-user">
+                    <i class="fas fa-users header-media"></i>
+                </div>
+                <div class="header-media-button media-messenger">
+                    <i class="fab fa-facebook-messenger header-media"></i>
+                </div>
+                <div class="header-media-button media-bell">
+                    <i class="fas fa-bell header-media"></i>
+                </div>
+                <div class="header-media-button media-search">
+                    <i class="fas fa-search header-media"></i>
+                </div>
+                <div class="header-media-button media-bars">
+                    <i class="fas fa-bars header-media"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="screen">
+        <div class="wall">
+            <div class="sidebar">
+                <div class="scrolling no-scroll">
+                    <div class="user-sidebar">
+                        <img class="sidebar-profile" src="pic/profile.jpg" alt="Lucas Lyra Profile">
+                        <span class="name">Lucas</span>
+                        <span class="last-name">Lyra</span>
+                    </div>
+                    <div class="social-sidebar">
+                        <div class="social-grid newsfeed">
+                            <i class="fas fa-newspaper"></i>
+                            <span class="social newsfeed-title">News Feed</span>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <div class="social-grid messanger">
+                            <i class="fab fa-facebook-messenger"></i>  
+                            <span class="social messager-title">Messanger</span>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                        <div class="social-grid marketplace">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="social marketplace-title">Marketplace</span>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="shortcuts-sidebar">
+                        <span class="sidebar-titles">Shortcuts</span>
+                        <div class="social-grid group"> 
+                            <i class="fas fa-user-secret"></i>
+                            <div class="g1 group-name">Group 1</div>
+                        </div>
+                        <div class="social-grid group"> 
+                            <i class="fas fa-user-ninja"></i>
+                            <div class="g2 group-name">Group 2</div>
+                        </div>
+                        <div class="social-grid group"> 
+                            <i class="fas fa-user-secret"></i>
+                            <div class="g3 group-name">Group 3</div>
+                        </div>
+                        <div class="social-grid group"> 
+                            <i class="fas fa-user-ninja"></i>
+                            <div class="g4 group-name">Group 4</div>
+                        </div>
+                        <div class="shortcut see-more">
+                            <i class="fas fa-sort-down"></i>
+                            <span class="see-more-text">See More...</span>
+                        </div>
+                    </div>
+                    <div class="explore-sidebar">
+                        <span class="sidebar-titles">Explore</span>
+                        <div class="sidebar-events social-grid"> 
+                            <i class="far fa-calendar-alt"></i>
+                            <span class="explore events-text">Events</span>
+                        </div>
+                        <div class="sidebar-pages social-grid"> 
+                            <i class="fas fa-flag"></i>
+                            <span class="explore pages-text">Pages</span>
+                        </div>
+                        <div class="sidebar-groups social-grid"> 
+                            <i class="fas fa-user-ninja"></i>
+                            <span class="explore groups-text">Groups</span>
+                        </div>
+                        <div class="sidebar-friends social-grid"> 
+                            <i class="fas fa-user-friends"></i>
+                            <span class="explore friends-text">Friends</span>
+                        </div>
+                        <div class="sidebar-onthisday social-grid"> 
+                            <i class="fas fa-clock"></i>
+                            <span class="explore onthisday-text">On This Day</span>
+                        </div>
+                        <div class="explore see-more">
+                            <i class="fas fa-sort-down"></i>
+                            <span class="see-more-text">See More...</span>
+                        </div>
+                    </div>
+                    <div class="create-sidebar">
+                        <span class="sidebar-titles">Create</span>
+                        <br>
+                        <span class="create ad">Ad</span>
+                        <span class="create divider">|</span>
+                        <span class="create page">Page</span>
+                        <span class="create divider">|</span>
+                        <span class="create create-group">Group</span>
+                        <span class="create divider">|</span>
+                        <span class="create event">Event</span>
+                    </div>
+                </div>
+            </div>
+            <div class="posts">
+                <div class="scrolling scroll">
+                    <div class="new-post">
+                        <cont class="post-options post-cont">
+                            <div class="post-text post-ot">
+                                <i class="fas fa-pencil-alt"></i>
+                                <span class="post-text-title">Make Post</span>
+                                <span class="cool-arrow-post"></span>
+                            </div>
+                            <span class="divider">|</span>
+                            <div class="post-album post-ot">
+                                <i class="fas fa-images"></i>
+                                <span class="post-album-title">Photo/Video Album</span>
+                            </div>
+                            <span class="divider">|</span>
+                            <div class="post-live post-ot">
+                                <i class="fas fa-video"></i>
+                                <span class="post-live-title">Live Video</span>
+                            </div>
+                        </cont>
+                        <cont class="post-box post-cont">
+                            <img class="post-profile" src="pic/profile.jpg" alt="Lucas Lyra Profile">
+                            <textarea class="post-box-input" maxlength="180" type="textarea" placeholder="What's on your mind, Lucas?"></textarea>
+                        </cont>
+                        <cont class="post-add post-cont">
+                            <div class="post-add-photo post-ot">
+                                <i class="fas fa-image"></i>
+                                <span class="add-photo-title"> Photo/Video </span>
+                            </div>
+                            <div class="post-add-feeling post-ot">
+                                <i class="far fa-smile"></i>
+                                <span class="add-feeling-title">Feeling/Activity</span>
+                            </div>
+                            <i class="fas fa-ellipsis-h"></i>
+                        </cont>
+                    </div>
+                    <div class="post post1">
+                        <div class="user-posting">
+                            <img src="pic/spongebob-profile.jpg" alt="SpongeBob Profile" class="post-profile">
+                            <div class="user-posting-name-time">
+                                <span class="username-posting"> SpongeBob SquarePants</span>
+                                <span class="time-posting">10hrs</span>
+                                <i class="fas fa-globe"></i>
+                            </div>
+                        </div>
+                        <span class="post-content">SpongeBob driving!</span>
+                        <img src="pic/post1-content.jpg" alt="SpongeBob driving" class="pic1">
+                        <div class="post-action">
+                            <div class="post-like">
+                                <i class="far fa-thumbs-up"></i>
+                                <span>Like</span>
+                            </div>
+                            <div class="post-comment">
+                                <i class="far fa-comment-alt"></i>
+                                <span>Comment</span>
+                            </div>
+                            <div class="post-share">
+                                <i class="fas fa-share"></i>
+                                <span>Share</span>
+                            </div>
+                        </div>
+                        <div class="post-likes">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span class="likes-amount">10</span>
+                        </div>
+                    </div>
+                    <div class="post post2">
+                        <div class="user-posting">
+                            <img src="https://picsum.photos/200/200/?random" alt="Random Profile" class="post-profile">
+                            <div class="user-posting-name-time">
+                                <span class="username-posting"> Somebody</span>
+                                <span class="time-posting">1hr</span>
+                                <i class="fas fa-globe"></i>
+                            </div>
+                        </div>
+                        <span class="post-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor ultrices enim, fringilla consequat orci aliquet id. Proin eleifend feugiat elit, in condimentum sem tincidunt non. Nam ullamcorper imperdiet nunc a vulputate. Morbi ultrices tortor sit amet augue eleifend tempor. Aenean blandit et ipsum eget facilisis. Nam congue nisi id mi fringilla, sit amet ornare orci consequat. Donec ac consectetur libero, vitae consequat est. Proin ultricies nisl consectetur nunc consequat, sed volutpat mauris congue. Proin mattis interdum tortor.
+                            
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus et diam nec diam posuere laoreet elementum posuere felis. Sed aliquam, ligula sed vestibulum ultrices, lacus mauris finibus sem, ac finibus ex nulla non ipsum. Nam dictum lorem magna, id convallis magna sagittis placerat. Aenean lobortis euismod interdum. Fusce posuere risus augue, sed fringilla dui malesuada eget. Morbi consequat imperdiet maximus. Vestibulum sagittis pellentesque ante vitae hendrerit. Nam ante orci, ullamcorper id ipsum non, consequat tempor tellus. Donec ultricies lectus vitae mauris malesuada, sed iaculis turpis laoreet. Mauris sapien enim, pulvinar a purus nec, consequat finibus erat. Quisque.</span>
+                            <div class="post-action">
+                                <div class="post-like">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>Like</span>
+                                </div>
+                                <div class="post-comment">
+                                    <i class="far fa-comment-alt"></i>
+                                    <span>Comment</span>
+                                </div>
+                                <div class="post-share">
+                                    <i class="fas fa-share"></i>
+                                    <span>Share</span>
+                                </div>
+                            </div>
+                            <div class="post-likes">
+                                <i class="fas fa-thumbs-up"></i>
+                                <span class="likes-amount">10</span>
+                            </div>
+                        </div>
+                        <div class="post post3">
+                            <div class="user-posting">
+                                <img src="https://picsum.photos/200/200/?random" alt="Random Profile" class="post-profile">
+                                <div class="user-posting-name-time">
+                                    <span class="username-posting"> Somebody</span>
+                                    <span class="time-posting">1hr</span>
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <span class="post-content">BlaBla</span>
+                            <div class="post-action">
+                                <div class="post-like">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>Like</span>
+                                </div>
+                                <div class="post-comment">
+                                    <i class="far fa-comment-alt"></i>
+                                    <span>Comment</span>
+                                </div>
+                                <div class="post-share">
+                                    <i class="fas fa-share"></i>
+                                    <span>Share</span>
+                                </div>
+                            </div>
+                            <div class="post-likes">
+                                <i class="fas fa-thumbs-up"></i>
+                                <span class="likes-amount">10</span>
+                            </div>
+                        </div>
+                        <div class="post post4">
+                            <div class="user-posting">
+                                <img src="https://picsum.photos/200/200/?random" alt="Random Profile" class="post-profile">
+                                <div class="user-posting-name-time">
+                                    <span class="username-posting"> Somebody</span>
+                                    <span class="time-posting">1hr</span>
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <span class="post-content">BlaBla</span>
+                            <div class="post-action">
+                                <div class="post-like">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>Like</span>
+                                </div>
+                                <div class="post-comment">
+                                    <i class="far fa-comment-alt"></i>
+                                    <span>Comment</span>
+                                </div>
+                                <div class="post-share">
+                                    <i class="fas fa-share"></i>
+                                    <span>Share</span>
+                                </div>
+                            </div>
+                            <div class="post-likes">
+                                <i class="fas fa-thumbs-up"></i>
+                                <span class="likes-amount">10</span>
+                            </div>
+                        </div>
+                        <div class="post post5">
+                            <div class="user-posting">
+                                <img src="https://picsum.photos/200/200/?random" alt="Random Profile" class="post-profile">
+                                <div class="user-posting-name-time">
+                                    <span class="username-posting"> Somebody</span>
+                                    <span class="time-posting">1hr</span>
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                            </div>
+                            <span class="post-content">BlaBla</span>
+                            <div class="post-action">
+                                <div class="post-like">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span>Like</span>
+                                </div>
+                                <div class="post-comment">
+                                    <i class="far fa-comment-alt"></i>
+                                    <span>Comment</span>
+                                </div>
+                                <div class="post-share">
+                                    <i class="fas fa-share"></i>
+                                    <span>Share</span>
+                                </div>
+                            </div>
+                            <div class="post-likes">
+                                <i class="fas fa-thumbs-up"></i>
+                                <span class="likes-amount">10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="events">
+                    <div class="scrolling no-scroll">
+                        <div class="stories">
+                            <div class="stories-header">
+                                <span class="stories-title">Stories</span>
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                            <div class="stories-story-main stories-hover">
+                                <i class="fas fa-plus-circle"></i>
+                                <span class="stories-username">Add to Your Story</span>
+                                <span class="stories-additional">Share a photo, video or write something</span>
+                            </div>
+                            <div class="stories-story-1 stories-hover">
+                                <i class="far fa-user-circle"></i>
+                                <span class="stories-username">User 1</span>
+                                <span class="stories-additional">10 hours ago</span>
+                            </div>
+                            <div class="stories-story-2 stories-hover">
+                                <i class="far fa-user-circle"></i>
+                                <span class="stories-username">User 2</span>
+                                <span class="stories-additional">11 hours ago</span>
+                            </div>
+                            <div class="see-more">
+                                <i class="fas fa-sort-down"></i>
+                                <span class="see-more-text">See More<span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+    </html>
