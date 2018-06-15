@@ -1,17 +1,19 @@
 class User{
-    constructor(name, lastname){
+    constructor(name, lastname, pic){
         this.name = name;
         this.lastname = lastname;
-        this.profilePic = "pic/profile.jpg";
+        this.profilePic = pic;
     }
     get fullname(){
         return `${this.name} ${this.lastname}`;
     }
 }
-class Posts{
-    constructor(postQuery){
+let username = new User("Lucas", "Lyra", "pic/profile.jpg")
+
+class Posting{
+    constructor(postQuery, user){
         this.postQuery = postQuery;
-        this.user = new User("Lucas", "Lyra");
+        this.user = user
         this.input = document.querySelector(".post-box-input");
         this.input.addEventListener("keypress", (event) => {
             if (event.keyCode == 13) { 
@@ -31,43 +33,58 @@ class Posts{
                 this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
             }
         };
-class Body{
-            constructor(text, user){
-                this.el = document.createElement("div");
-                this.el.classList.add("post");
-                this.el.innerHTML = 
-                `
-                <div class="user-posting">
-                <img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
-                <div class="user-posting-name-time">
-                <span class="username-posting"> ${user.fullname}</span>
-                <span class="time-posting">Now</span>
-                <i class="fas fa-globe"></i>
-                </div>
-                <div class="post-user-options">
-                <i class="fas fa-ellipsis-h post-hover"></i>
-                <span class="cool-arrow-post"></span>
-                <div class="post-hover-box">
-                <span class="post-hover-options post-hover-delete"> Delete </span>
-                <span class="post-hover-options post-hover-something">Something</span>
-                </div>
-                </div>
-                </div>
-                <span class="post-content">${text}</span>
-                `;  
-                
-                this.removeButton = this.el.querySelector('.post-hover-delete');
-                this.removeButton.addEventListener('click', () => this.remove());
-                this.somethingButton = this.el.querySelector(".post-hover-something");
-                this.somethingButton.addEventListener('click', () => this.something());
-            };
-            remove() {
-                this.el.parentNode.removeChild(this.el);
-            }
-            something(){
-                alert("*** JUST SOMETHING! ***")
-            }
+
+class Posts{
+    constructor(postQuery, input, user){
+        this.postQuery = postQuery;
+        this.user = user
+        this.input = input;
+    }
+    newPost(){
+        let postText = this.input;
+        let postBody = new Actions(postText,this.user);~
+        this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
+    }
 };
+
+class Body{
+    constructor(text, user){
+        this.el = document.createElement("div");
+        this.el.classList.add("post");
+        this.el.innerHTML = 
+        `
+        <div class="user-posting">
+            <img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
+        <div class="user-posting-name-time">
+            <span class="username-posting"> ${user.fullname}</span>
+            <span class="time-posting">Now</span>
+            <i class="fas fa-globe"></i>
+        </div>
+            <div class="post-user-options">
+            <i class="fas fa-ellipsis-h post-hover"></i>
+            <span class="cool-arrow-post"></span>
+        <div class="post-hover-box">
+            <span class="post-hover-options post-hover-delete"> Delete </span>
+            <span class="post-hover-options post-hover-something">Something</span>
+        </div>
+        </div>
+        </div>
+        <span class="post-content">${text}</span>
+        `;  
+        
+        this.removeButton = this.el.querySelector('.post-hover-delete');
+        this.removeButton.addEventListener('click', () => this.remove());
+        this.somethingButton = this.el.querySelector(".post-hover-something");
+        this.somethingButton.addEventListener('click', () => this.something());
+    };
+    remove() {
+        this.el.parentNode.removeChild(this.el);
+    }
+    something(){
+        alert("*** JUST SOMETHING! ***")
+    }
+};
+
 class Actions extends Body{
     constructor(text,user){
         super(text,user);
@@ -104,19 +121,29 @@ class Actions extends Body{
         
         this.likesAmount = document.createElement("span");
         this.likesAmount.classList.add("likes-amount");
-        this.likesAmount.innerHTML = Math.ceil(Math.random()*100);
+        this.likesAmount.innerHTML = 0;
+        this.hide(this.likesAmount.innerHTML);
         this.postLikes.appendChild(this.likesAmount);
         this.el.appendChild(this.postLikes);
+        
+     
     };
+    hide(value){
+        if (value == 0){
+        this.postLikes.classList.add("hide")
+        } else { this.postLikes.classList.remove("hide") }
+    }
     like(){
         if(this.likeButton.classList.contains("clicked")){
-            this.likeButton.classList.remove("clicked")
-            this.likesAmount.innerHTML--
+            this.likeButton.classList.remove("clicked");
+            this.likesAmount.innerHTML--;
+            this.hide(this.likesAmount.innerHTML);
         } else {
-            this.likeButton.classList.add("clicked")
-            this.likesAmount.innerHTML++
+            this.likeButton.classList.add("clicked");
+            this.likesAmount.innerHTML++;
+            this.hide(this.likesAmount.innerHTML);
         }
     }
 }
         
-        new Posts(document.querySelector(".posted"));
+new Posting(document.querySelector(".posted"), username);

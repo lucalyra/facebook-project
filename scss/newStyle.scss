@@ -390,6 +390,8 @@ div[class^="post-add"],
     };
     
 }
+
+
 .user-posting{
     display: grid;
     grid-template-columns: 60px auto;
@@ -649,6 +651,9 @@ div[class^="stories-story"]:hover{
     &:hover .see-more-text{
         text-decoration: underline;
     }
+}
+.hide{
+    display: none;
 }
 @import "media";
 
