@@ -96,7 +96,7 @@ body{
 
 .sidebar-titles{
     font-weight:bold;
-    color:gray;
+    color:$color-gray;
     margin-bottom: 5px;
     
 }
@@ -120,7 +120,7 @@ body{
     text-decoration: underline; 
 }
 .divider{
-    color: gray;
+    color: $color-gray;
     font-size:10px;
     cursor: default;
 }
@@ -205,7 +205,7 @@ body{
 .social-grid .fa-ellipsis-h {
     grid-area: dot;
     display:none;
-    color: gray;
+    color: $color-gray;
 }
 .social-grid:hover .fa-ellipsis-h{
     display: inline-block;
@@ -279,6 +279,12 @@ body{
     "icon title";
     padding: 8px;
 }
+.post-ot:hover{
+    background-color:#ecedef;
+    cursor: pointer;   
+    border: 0px solid black;
+    border-radius: 10px; 
+}
 
 
 .post-options{
@@ -300,8 +306,8 @@ body{
     grid-area: title;
     font-weight: bold;
     color:$main-blue-color;
-    
 }
+
 .post-options .divider{
     font-size: 20px;
 }
@@ -356,7 +362,7 @@ div[class^="post-add"],
         height: 12.2px;
         text-align: center;
         font-size:18px;
-        color:gray;
+        color:$color-gray;
     };
 }
 .post-add-photo .fa-image{
@@ -382,29 +388,25 @@ div[class^="post-add"],
         max-width: 500px;
         margin:10px 10px 0 10px;
     };
+    
 }
 .user-posting{
     display: grid;
     grid-template-columns: 60px auto;
     grid-template-rows: auto;
     grid-template-areas: 
-    "profile username";
+    "profile username options";
     align-items: center;
     margin-bottom: 6px;
     margin-top:6px;
     
-    .fa-user-circle{
-        padding: 4px;
-        padding-left: 10px;
-        font-size:40px;
-        grid-area: profile;
-        color:green;
+    .post-profile{
+        grid-area:profile;
     }
-    
     .user-posting-name-time{
         grid-area: username;
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: 30px 300px;
         grid-template-rows:auto;
         grid-template-areas: 
         "name name"
@@ -421,14 +423,94 @@ div[class^="post-add"],
         .time-posting{
             grid-area: time;
             font-size:10px;
+            color: $color-gray;
         }
         
         .fa-globe{
             grid-area: privacy;
             margin-right:390px;
             font-size: 8px;
+            color: $color-gray;
         }
     }
+   
+    .post-user-options{
+        grid-area: options;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        .post-hover-box{
+            display:none;
+           
+        }
+        .cool-arrow-post{
+            display: none;
+        }
+        
+        .post-hover{
+            color: gray;
+        }
+        &:hover .post-hover-box {
+            display: inline-block;
+            position: absolute;
+            left: -10%;
+            top: 65%;
+            padding: 5px 0px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-around;
+            background-color:#eeeeee;
+            width: 100px;
+            overflow: hidden;
+
+        }
+
+        &:hover .cool-arrow-post{
+            border-bottom: 8px solid #dddddd	;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            left: 22px;
+            top: 36px;
+            font-size: 0;
+            height: 0;
+            line-height: 0;
+            position: absolute;
+            width: 0;
+            display: block;
+            z-index: 2;
+        }
+        .cool-arrow-post::after{
+            border-bottom: 8px solid #eeeeee;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            left: -8px;
+            top: 2px;
+            content: " ";
+            position: absolute;
+        }
+        .post-hover-options{
+            width: 100%;
+            margin-top:5px;
+            margin-bottom: 5px;
+            padding: 4px 5px;
+            font-weight: bold;
+
+            &:hover{
+                background-color:#cccccc;
+                cursor: pointer;
+            }
+        }
+
+        
+    }
+
 }
 
 .post-content{
@@ -441,7 +523,7 @@ div[class^="post-add"],
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    color: gray;
+    color: $color-gray;
     border-bottom: 1px solid rgb(221, 223, 226);
     font-weight: bold;
     
@@ -505,7 +587,7 @@ div[class^="post-add"],
 .stories-title,
 .stories-header .fa-ellipsis-h{
     padding:8px;
-    color: gray;
+    color: $color-gray;
     font-weight: bold;
 }
 div[class^="stories-story"]{
@@ -540,7 +622,7 @@ div[class^="stories-story"] .stories-username{
 }
 div[class^="stories-story"] .stories-additional{
     grid-area:add;
-    color:rgba(128, 128, 128, 0.7490196078431373);
+    color:$color-gray;
     font-weight: bold;
     font-size:11px;
 }
@@ -556,7 +638,7 @@ div[class^="stories-story"]:hover{
     cursor: pointer;
     
     .fas{
-        color:gray;
+        color:$color-gray;
     };
     
     &:hover .see-more-text{
