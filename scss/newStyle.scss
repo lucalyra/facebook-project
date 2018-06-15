@@ -530,13 +530,18 @@ div[class^="post-add"],
     div[class^="post-"]{
         padding:7px;
         margin: 2px 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     div[class^="post-"]:hover{
         background-color: #f2f3f5;
         cursor: pointer;
-        border: 0px solid black;
-        border-radius: 10px;
         
+    }
+    .clicked{
+        background-color: #f2f3f5;
     }
 }
 .post-likes{
@@ -562,8 +567,8 @@ div[class^="post-add"],
         color: $main-blue-color;
         margin-left: 2px;
     }
-    
 }
+
 
 .stories{
     display: flex;
