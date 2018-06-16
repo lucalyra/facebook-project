@@ -18,16 +18,14 @@ class Posting{
         this.user = user
         this.input = document.querySelector(".post-box-input");
         this.input.addEventListener("keypress", (event) => {
-            if (event.keyCode == 13) { 
-                event.preventDefault();
-                if(this.input.value ==  ""){
-                    return;
+            if (event.keyCode == 10) {
+                if(this.input.value == (this.input.keyCode == 13)){
+                    alert("Looks like your post is empty, try writing something.");
                 } else {
                     this.newPost();
-                    this.input.value = "";}
-                }
-                });
-                
+                    this.input.value = "";
+                    this.input.blur()
+                } } } );      
             }
             newPost(){
                 let postText = this.input.value;
@@ -79,7 +77,6 @@ class Body{
         this.textEl.innerHTML = text;
         this.el.appendChild(this.textEl);
 
-        
         this.removeButton = this.el.querySelector('.post-hover-delete');
         this.removeButton.addEventListener('click', () => this.remove());
         
@@ -103,21 +100,20 @@ class Body{
         alert("*** JUST SOMETHING! ***")
     };
     edit(){
-
         this.editArea = document.createElement("textarea");
         this.editArea.classList.add("edit-active");
-
         this.editArea.value = this.textEl.innerHTML;
         this.el.replaceChild(this.editArea, this.textEl);
-
+        this.editArea.focus();
         this.editArea.addEventListener('keypress', (event) => {
-            if (event.keyCode == 13) { 
-                event.preventDefault();
+            if (event.keyCode == 10) { 
+                if(this.editArea.value == (this.editArea.keyCode == 13)){
+                    alert("Looks like your post is empty, try writing something.");
+                } else {
                 this.textEl.innerHTML = this.editArea.value;
                 this.textEl.classList.remove("edit-active");
                 this.el.replaceChild(this.textEl, this.editArea);
-              }})
-              
+              }}}) 
     }
 };
 
@@ -158,13 +154,13 @@ class Actions extends Body{
         this.likesAmount = document.createElement("span");
         this.likesAmount.classList.add("likes-amount");
         this.likesAmount.innerHTML = 0;
-        this.hide(this.likesAmount.innerHTML);
+        this.hideLike(this.likesAmount.innerHTML);
         this.postLikes.appendChild(this.likesAmount);
         this.el.appendChild(this.postLikes);
         
      
     };
-    hide(value){
+    hideLike(value){
         if (value == 0){
         this.postLikes.classList.add("hide")
         } else { this.postLikes.classList.remove("hide") }
@@ -173,11 +169,11 @@ class Actions extends Body{
         if(this.likeButton.classList.contains("clicked")){
             this.likeButton.classList.remove("clicked");
             this.likesAmount.innerHTML--;
-            this.hide(this.likesAmount.innerHTML);
+            this.hideLike(this.likesAmount.innerHTML);
         } else {
             this.likeButton.classList.add("clicked");
             this.likesAmount.innerHTML++;
-            this.hide(this.likesAmount.innerHTML);
+            this.hideLike(this.likesAmount.innerHTML);
         }
     }
 }

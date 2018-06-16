@@ -11,7 +11,8 @@ let lorem6 = "Sea no soluta prodesset persequeris. Ne justo appetere reprehendun
 let lorem7 = "Eos te odio eirmod, saperet erroribus gloriatur ad usu. Ex nec malorum elaboraret cotidieque! Nam te quem stet laudem albucius.";
 let lorem8 = "In qui etiam quidam essent, has an elitr aperiam, ius facete tritani et. Vim movet constituam ad! Ne euripidis definitiones.";
 let lorem9 = "Vis affert probatus vulputate in, vis in autem atqui laboramus. Facilisis imperdiet no mei, ei mundi dicant scripserit mei in.";
-let loremArr = [lorem0,lorem1,lorem2,lorem3,lorem4,lorem5,lorem6,lorem7,lorem8,lorem9];
+let lorem10 = "eu feugiat pretium nibh ipsum consequat";
+let loremArr = [lorem0,lorem1,lorem2,lorem3,lorem4,lorem5,lorem6,lorem7,lorem8,lorem9,lorem10];
 
 let Guy0 = "";
 
