@@ -1,3 +1,4 @@
+//new user
 class User{
     constructor(name, lastname, pic){
         this.name = name;
@@ -10,6 +11,7 @@ class User{
 }
 let username = new User("Lucas", "Lyra", "pic/profile.jpg")
 
+//new post
 class Posting{
     constructor(postQuery, user){
         this.postQuery = postQuery;
@@ -22,8 +24,8 @@ class Posting{
                     return;
                 } else {
                     this.newPost();
-                    this.input.value = "";
-                    window.focus()};}
+                    this.input.value = "";}
+                }
                 });
                 
             }
@@ -34,6 +36,7 @@ class Posting{
             }
         };
 
+//someone post
 class Posts{
     constructor(postQuery, input, user){
         this.postQuery = postQuery;
@@ -64,24 +67,57 @@ class Body{
             <i class="fas fa-ellipsis-h post-hover"></i>
             <span class="cool-arrow-post"></span>
         <div class="post-hover-box">
-            <span class="post-hover-options post-hover-delete"> Delete </span>
+            <span class="post-hover-options post-hover-delete">Delete</span>
+            <span class="post-hover-options post-hover-edit">Edit</span>
             <span class="post-hover-options post-hover-something">Something</span>
         </div>
         </div>
         </div>
-        <span class="post-content">${text}</span>
-        `;  
+        `;
+        this.textEl = document.createElement("span");
+        this.textEl.classList.add("post-content");
+        this.textEl.innerHTML = text;
+        this.el.appendChild(this.textEl);
+
         
         this.removeButton = this.el.querySelector('.post-hover-delete');
         this.removeButton.addEventListener('click', () => this.remove());
+        
         this.somethingButton = this.el.querySelector(".post-hover-something");
         this.somethingButton.addEventListener('click', () => this.something());
+
+        this.editButton = this.el.querySelector(".post-hover-edit");
+        this.editButton.addEventListener('click', () => {
+            if( this.textEl.classList.contains("edit-active")){
+                this.textEl.classList.remove("edit-active");
+                this.el.replaceChild(this.textEl, this.editArea)
+                } else {
+                    this.textEl.classList.add("edit-active");
+                    this.edit();
+                }})
     };
     remove() {
         this.el.parentNode.removeChild(this.el);
-    }
+    };
     something(){
         alert("*** JUST SOMETHING! ***")
+    };
+    edit(){
+
+        this.editArea = document.createElement("textarea");
+        this.editArea.classList.add("edit-active");
+
+        this.editArea.value = this.textEl.innerHTML;
+        this.el.replaceChild(this.editArea, this.textEl);
+
+        this.editArea.addEventListener('keypress', (event) => {
+            if (event.keyCode == 13) { 
+                event.preventDefault();
+                this.textEl.innerHTML = this.editArea.value;
+                this.textEl.classList.remove("edit-active");
+                this.el.replaceChild(this.textEl, this.editArea);
+              }})
+              
     }
 };
 
