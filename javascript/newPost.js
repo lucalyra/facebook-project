@@ -88,7 +88,6 @@ class Body{
                     this.edit();
                 }})
     };
-  
 
     remove() {
         this.el.parentNode.removeChild(this.el);
@@ -97,6 +96,7 @@ class Body{
     something(){
         alert("*** JUST SOMETHING! ***")
     };
+
     edit(){
         this.editArea = document.createElement("textarea");
         this.editArea.classList.add("edit-active");
@@ -111,7 +111,9 @@ class Body{
                 this.textEl.innerHTML = this.editArea.value;
                 this.textEl.classList.remove("edit-active");
                 this.el.replaceChild(this.textEl, this.editArea);
-              }}}) 
+                }
+            }
+        }) 
     }
 };
 
@@ -157,22 +159,28 @@ class Actions extends Body{
             this.el.appendChild(this.postLikes);   
 
             //comments
-            this.commenting = document.createElement("div");
+            this.commenting = document.createElement("div"); //create comments box
             this.commenting.classList.add("post-commenting");
-            this.commenting.classList.add("hide");
+            this.commenting.classList.add("hide"); //hide comments box
             this.commenting.innerHTML = 
             `<textarea class="commenting-textarea" placeholder="Commenting..."></textarea>
                 <span class="comment-button">Add Comment</span>
                 </div> `
             this.el.appendChild(this.commenting);   
-            this.commentButton = this.postAction.querySelector(".post-comment");
+
+            this.commentButton = this.postAction.querySelector(".post-comment"); //comment button
             this.commentButton.addEventListener('click', () => this.openComments(user)); 
-            this.addComment = this.commenting.querySelector(".comment-button");
+            this.addComment = this.commenting.querySelector(".comment-button"); //add comment button
             this.addComment.addEventListener('click', () => this.submitComment())
 
+            this.commentInput = this.commenting.querySelector(".commenting-textarea"); //send comment when press ctrl+enter
+            this.commentInput.addEventListener('keypress', (event) => {
+                if (event.keyCode == 10) { 
+                    this.submitComment()} else {return}});
 
     };
-    hideLike(value){
+
+    hideLike(value){ 
         if (value == 0){
         this.postLikes.classList.add("hide")
         } else { this.postLikes.classList.remove("hide") }
@@ -188,19 +196,22 @@ class Actions extends Body{
             this.likesAmount.innerHTML++;
             this.hideLike(this.likesAmount.innerHTML);
         }
-    }
+    };
 
     openComments(){
         if(this.commenting.classList.contains("hide")){
-            this.commenting.classList.remove("hide");    
+            this.commentButton.classList.add("clicked");
+            this.commenting.classList.remove("hide");
         }   else {
                 this.commenting.classList.add("hide");
-                document.querySelector(".commenting-textarea").value = "";
+                this.commentButton.classList.remove("clicked");
+                this.commenting.querySelector(".commenting-textarea").value  = "";
             }
 
-    }
+    };
+
     submitComment(){
-        this.commentInput = document.querySelector(".commenting-textarea").value;
+        this.commentInput = this.commenting.querySelector(".commenting-textarea").value;
         this.commentBox = document.createElement("div");
         this.commentBox.classList.add("comments-box")
         this.commentBox.innerHTML = 
@@ -214,12 +225,7 @@ class Actions extends Body{
             <span class="comment-time"> Now </span>
         </div> `;
         this.commenting.appendChild(this.commentBox);
-    }
+    };
 }
 
-class Comments{
-    constructor(){
-
-    }
-}
 new Posting(document.querySelector(".posted"), username);

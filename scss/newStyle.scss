@@ -241,7 +241,7 @@ body{
     width: 100%;
     font-size: 13px;
     background-color:#FFFFFF;
-    border: 1px solid #dddfe2;
+    border: 1px solid $border-color;
     border-radius: 4px;
     
     .post-cont{
@@ -381,7 +381,7 @@ div[class^="post-add"],
     width: 100%;
     background: white;
     margin-top:5px;
-    border: 1px solid #dddfe2;
+    border: 1px solid $border-color;
     border-radius: 4px;
     
     .pic1{
@@ -590,7 +590,7 @@ div[class^="post-add"],
     display: flex;
     flex-direction: column;
     background-color: white;
-    border: 1px solid #dddfe2;
+    border: 1px solid $border-color;
     border-radius:4px;
     
     .see-more{
@@ -673,7 +673,7 @@ div[class^="stories-story"]:hover{
     flex-direction: column;
 
     background-color: white;
-    border: 1px solid #dddfe2;
+    border: 1px solid $border-color;
     border-left: 0px;
     border-right: 0px;
     height: auto;
@@ -688,7 +688,7 @@ div[class^="stories-story"]:hover{
         resize: vertical;
         font-family: 'Roboto', sans-serif;
         outline: none; 
-        border: 2px solid #dddfe2;
+        border: 2px solid $border-color;
         box-sizing: border-box;
         overflow: hidden;
     }
@@ -696,7 +696,7 @@ div[class^="stories-story"]:hover{
     .comment-button{
         color: $color-gray;
         background-color: #eeeeee;
-        border: 1px solid #dddfe2;
+        border: 1px solid $border-color;
         padding: 5px;
         margin: 5px;
         width: 84px;
@@ -717,7 +717,7 @@ div[class^="stories-story"]:hover{
     "picture content content content"
     "picture actions actions time";
     align-content: center;
-    border-top: 1px solid #dddfe2;
+    border-top: 1px solid $border-color;
     border-radius: 10px;
     margin-top:10px;
 
