@@ -646,6 +646,13 @@ div[class^="stories-story"] i[class*="fa-"]{
     grid-area: picture;
     font-size:45px;
 }
+div[class^="stories-story"] .post-profile{
+    grid-area: picture;
+    height: 45px;
+    border: 1px solid rgb(201, 198, 198);
+    border-radius: 25px;
+    box-sizing: border-box;
+}
 div[class^="stories-story"] .stories-username{
     grid-area: username;
     color: #344e86;
