@@ -243,7 +243,15 @@ body{
     background-color:#FFFFFF;
     border: 1px solid $border-color;
     border-radius: 4px;
+    transition: all 0.5s linear; 
+    position:relative;
+    z-index: 1;
     
+    &:focus-within{
+        transform:scale(1.2);
+ 
+    };
+
     .post-cont{
         display:flex;
         flex-direction: row;
@@ -328,6 +336,9 @@ body{
     border: none;
     overflow: hidden;
 }
+
+
+
 .post-box{
     border-bottom: 1px solid rgb(221, 223, 226);
     border-radius: 20px;
