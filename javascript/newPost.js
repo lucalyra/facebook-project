@@ -22,14 +22,13 @@ class Posting{
                 if(this.input.value == (this.input.keyCode == 13)){
                     alert("Looks like your post is empty, try writing something.");
                 } else {
-                    this.newPost();
+                    this.newPost1();
                     this.input.value = "";
                     this.input.blur()
                 } } } );      
             }
-            newPost(){
-                let postText = this.input.value;
-                let postBody = new Actions(postText,this.user);~
+            newPost1(){
+                let postBody = new Actions(this.input.value,this.user);~
                 this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
             }
         };
@@ -42,8 +41,7 @@ class Posts{
         this.input = input;
     }
     newPost(){
-        let postText = this.input;
-        let postBody = new Actions(postText,this.user);~
+        let postBody = new Actions(this.input,this.user);~
         this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
     }
 };
@@ -52,31 +50,28 @@ class Body{
     constructor(text, user){
         this.el = document.createElement("div");
         this.el.classList.add("post");
-        this.el.innerHTML = 
-        `
-        <div class="user-posting">
-            <img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
-        <div class="user-posting-name-time">
-            <span class="username-posting"> ${user.fullname}</span>
-            <span class="time-posting">Now</span>
-            <i class="fas fa-globe"></i>
-        </div>
-            <div class="post-user-options">
-            <i class="fas fa-ellipsis-h post-hover"></i>
-            <span class="cool-arrow-post"></span>
-        <div class="post-hover-box">
-            <span class="post-hover-options post-hover-delete">Delete</span>
-            <span class="post-hover-options post-hover-edit">Edit</span>
-            <span class="post-hover-options post-hover-something">Something</span>
-        </div>
-        </div>
-        </div>
-        `;
+        this.el.innerHTML = //User posting
+            `<div class="user-posting">
+                <img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
+            <div class="user-posting-name-time">
+                <span class="username-posting"> ${user.fullname}</span>
+                <span class="time-posting">Now</span>
+                <i class="fas fa-globe"></i>
+            </div>
+                <div class="post-user-options">
+                <i class="fas fa-ellipsis-h post-hover"></i>
+                <span class="cool-arrow-post"></span>
+            <div class="post-hover-box">
+                <span class="post-hover-options post-hover-delete">Delete</span>
+                <span class="post-hover-options post-hover-edit">Edit</span>
+                <span class="post-hover-options post-hover-something">Something</span>
+            </div>
+            </div>
+            </div>`;
         this.textEl = document.createElement("span");
         this.textEl.classList.add("post-content");
         this.textEl.innerHTML = text;
         this.el.appendChild(this.textEl);
-
         this.removeButton = this.el.querySelector('.post-hover-delete');
         this.removeButton.addEventListener('click', () => this.remove());
         
@@ -93,9 +88,12 @@ class Body{
                     this.edit();
                 }})
     };
+  
+
     remove() {
         this.el.parentNode.removeChild(this.el);
     };
+  
     something(){
         alert("*** JUST SOMETHING! ***")
     };
@@ -120,51 +118,66 @@ class Body{
 class Actions extends Body{
     constructor(text,user){
         super(text,user);
-        //like, comments, share
-        this.postAction = document.createElement("div");
-        this.postAction.classList.add("post-action");
-        this.postAction.innerHTML =  
-        `
-        <div class="post-like">
-            <i class="far fa-thumbs-up"></i>
-            <span>Like</span>
-        </div>
-        <div class="post-comment">
-            <i class="far fa-comment-alt"></i>
-            <span>Comment</span>
-        </div>
-        <div class="post-share">
-            <i class="fas fa-share"></i>
-            <span>Share</span>
-        </div>
-        `;
+            //like, comments, share
+            this.postAction = document.createElement("div");
+            this.postAction.classList.add("post-action");
+            this.postAction.innerHTML =  
+            `
+            <div class="post-like">
+                <i class="far fa-thumbs-up"></i>
+                <span>Like</span>
+            </div>
+            <div class="post-comment">
+                <i class="far fa-comment-alt"></i>
+                <span>Comment</span>
+            </div>
+            <div class="post-share">
+                <i class="fas fa-share"></i>
+                <span>Share</span>
+            </div>
+            `;
 
-        this.likeButton = this.postAction.querySelector(".post-like");
-        this.likeButton.addEventListener('click', () => this.like());
+            this.likeButton = this.postAction.querySelector(".post-like");
+            this.likeButton.addEventListener('click', () => this.like());
 
-        //likesAmount
-        this.el.appendChild(this.postAction);
-        this.postLikes = document.createElement("div");
-        this.postLikes.classList.add("post-likes");
-        
-        this.postLikes.innerHTML = 
-        `<i class="fas fa-thumbs-up"></i>
-        `;
-        
-        this.likesAmount = document.createElement("span");
-        this.likesAmount.classList.add("likes-amount");
-        this.likesAmount.innerHTML = 0;
-        this.hideLike(this.likesAmount.innerHTML);
-        this.postLikes.appendChild(this.likesAmount);
-        this.el.appendChild(this.postLikes);
-        
-     
+            //likesAmount
+            this.el.appendChild(this.postAction);
+            this.postLikes = document.createElement("div");
+            this.postLikes.classList.add("post-likes");
+            
+            this.postLikes.innerHTML = 
+            `<i class="fas fa-thumbs-up"></i>
+            `;
+            
+            this.likesAmount = document.createElement("span");
+            this.likesAmount.classList.add("likes-amount");
+            this.likesAmount.innerHTML = 0;
+            this.hideLike(this.likesAmount.innerHTML);
+            this.postLikes.appendChild(this.likesAmount);
+            this.el.appendChild(this.postLikes);   
+
+            //comments
+            this.commenting = document.createElement("div");
+            this.commenting.classList.add("post-commenting");
+            this.commenting.classList.add("hide");
+            this.commenting.innerHTML = 
+            `<textarea class="commenting-textarea" placeholder="Commenting..."></textarea>
+                <span class="comment-button">Add Comment</span>
+                </div> `
+            this.el.appendChild(this.commenting);   
+            this.commentButton = this.postAction.querySelector(".post-comment");
+            this.commentButton.addEventListener('click', () => this.openComments(user)); 
+            this.addComment = this.commenting.querySelector(".comment-button");
+            this.addComment.addEventListener('click', () => this.submitComment())
+
+
     };
     hideLike(value){
         if (value == 0){
         this.postLikes.classList.add("hide")
         } else { this.postLikes.classList.remove("hide") }
     }
+
     like(){
         if(this.likeButton.classList.contains("clicked")){
             this.likeButton.classList.remove("clicked");
@@ -176,6 +189,37 @@ class Actions extends Body{
             this.hideLike(this.likesAmount.innerHTML);
         }
     }
+
+    openComments(){
+        if(this.commenting.classList.contains("hide")){
+            this.commenting.classList.remove("hide");    
+        }   else {
+                this.commenting.classList.add("hide");
+                document.querySelector(".commenting-textarea").value = "";
+            }
+
+    }
+    submitComment(){
+        this.commentInput = document.querySelector(".commenting-textarea").value;
+        this.commentBox = document.createElement("div");
+        this.commentBox.classList.add("comments-box")
+        this.commentBox.innerHTML = 
+        `
+        <img src="${username.profilePic} " alt="${username.fullname} Profile" class="post-profile">
+        <span class="username-commenting"> ${username.fullname}</span>
+        <span class="comment-content"> ${this.commentInput} </span>
+        <div class="comments-actions">
+            <span class="comment-like">Like</span>
+            <span class="comment-comment">Reply</span>
+            <span class="comment-time"> Now </span>
+        </div> `;
+        this.commenting.appendChild(this.commentBox);
+    }
 }
-        
+
+class Comments{
+    constructor(){
+
+    }
+}
 new Posting(document.querySelector(".posted"), username);
