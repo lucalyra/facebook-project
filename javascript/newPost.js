@@ -22,18 +22,18 @@ class Posting{
                 if(this.input.value == (this.input.keyCode == 13)){
                     alert("Looks like your post is empty, try writing something.");
                 } else {
-                    this.newPost1();
+                    this.newPost();
                     this.input.value = "";
                     this.input.blur()
                 } } } );      
             }
-            newPost1(){
+            newPost(){
                 let postBody = new Actions(this.input.value,this.user);~
                 this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
             }
         };
 
-//someone post
+//random post
 class Posts{
     constructor(postQuery, input, user){
         this.postQuery = postQuery;
@@ -41,8 +41,16 @@ class Posts{
         this.input = input;
     }
     newPost(){
-        let postBody = new Actions(this.input,this.user);~
+        let postBody = new Actions(this.input,this.user);
+        let likesAmount = postBody.postLikes.querySelector(".likes-amount");
         this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
+        this.randomLikes(likesAmount);
+    }
+    randomLikes(body){
+       body.innerHTML = Math.ceil(Math.random()*100);
+       if (body.innerText > 0){
+            body.parentNode.classList.remove("hide");
+       } 
     }
 };
 
