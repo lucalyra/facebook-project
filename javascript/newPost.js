@@ -17,6 +17,7 @@ class Posting{
         this.postQuery = postQuery;
         this.user = user
         this.input = document.querySelector(".post-box-input");
+        if (this.view() == false){this.input.blur()};
         this.input.addEventListener("keypress", (event) => {
             if (event.keyCode == 10) {
                 if(this.input.value == (this.input.keyCode == 13)){
@@ -24,14 +25,31 @@ class Posting{
                 } else {
                     this.newPost();
                     this.input.value = "";
-                    this.input.blur()
-                } } } );      
-            }
-            newPost(){
-                let postBody = new Actions(this.input.value,this.user);~
-                this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
-            }
-        };
+                    this.input.blur();
+                } } } );
+    };
+
+    newPost(){
+        let postBody = new Actions(this.input.value,this.user);~
+        this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
+    } 
+
+    view(){ // **STILL WORKING ON IT!**
+        var newPPost = document.querySelector('.new-post');
+        var bounding = newPPost.getBoundingClientRect();
+        console.log("aa");
+        if (
+            bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+            ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+};
 
 //random post
 class Posts{
@@ -237,3 +255,22 @@ class Actions extends Body{
 }
 
 new Posting(document.querySelector(".posted"), username);
+
+
+
+
+function view(){
+    var newPPost = document.querySelector('.new-post');
+    var bounding = newPPost.getBoundingClientRect();
+    console.log(bounding);
+    if (
+        bounding.top >= 0 &&
+        bounding.left >= 0 &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        ) {
+            console.log('In the viewport!');
+        } else {
+            console.log('Not in the viewport... whomp whomp');
+        }
+}
