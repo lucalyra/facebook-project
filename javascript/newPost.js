@@ -17,7 +17,7 @@ class Posting{
         this.postQuery = postQuery;
         this.user = user
         this.input = document.querySelector(".post-box-input");
-        if (this.view() == false){this.input.blur()};
+        
         this.input.addEventListener("keypress", (event) => {
             if (event.keyCode == 10) {
                 if(this.input.value == (this.input.keyCode == 13)){
@@ -27,6 +27,8 @@ class Posting{
                     this.input.value = "";
                     this.input.blur();
                 } } } );
+        window.addEventListener("scroll", () => {this.activateView()});
+        
     };
 
     newPost(){
@@ -34,10 +36,13 @@ class Posting{
         this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
     } 
 
+
+    activateView(){
+    if (this.view() == false){this.input.blur()};
+    }
     view(){ // **STILL WORKING ON IT!**
-        var newPPost = document.querySelector('.new-post');
-        var bounding = newPPost.getBoundingClientRect();
-        console.log("aa");
+        let newPPost = document.querySelector('.new-post');
+        let bounding = newPPost.getBoundingClientRect();
         if (
             bounding.top >= 0 &&
             bounding.left >= 0 &&
@@ -49,7 +54,9 @@ class Posting{
             return false;
         }
     }
-};
+
+}1;
+
 
 //random post
 class Posts{
@@ -258,19 +265,3 @@ new Posting(document.querySelector(".posted"), username);
 
 
 
-
-function view(){
-    var newPPost = document.querySelector('.new-post');
-    var bounding = newPPost.getBoundingClientRect();
-    console.log(bounding);
-    if (
-        bounding.top >= 0 &&
-        bounding.left >= 0 &&
-        bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-        ) {
-            console.log('In the viewport!');
-        } else {
-            console.log('Not in the viewport... whomp whomp');
-        }
-}
