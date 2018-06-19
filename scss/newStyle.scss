@@ -401,6 +401,8 @@ div[class^="post-add"],
     margin-top:5px;
     border: 1px solid $border-color;
     border-radius: 4px;
+    transform-box: fill-box;
+
     
     .pic1{
         height: auto;
@@ -698,17 +700,20 @@ div[class^="stories-story"]:hover{
     }
 }
 
-
 .post-commenting{
     display: flex;
     flex-direction: column;
-
+    position: relative;
     background-color: white;
     border: 1px solid $border-color;
     border-left: 0px;
     border-right: 0px;
-    height: auto;
+    max-height: 510px;
     width: 500px;
+    overflow: hidden;
+
+
+
 
     .commenting-textarea{
         width: 100%;
@@ -814,7 +819,7 @@ div[class^="stories-story"]:hover{
 
 
 .hide{
-    display: none;
+ display: none !important
 }
 @import "media";
 
