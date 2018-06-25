@@ -744,7 +744,7 @@ div[class^="stories-story"]:hover{
         }
     }
 }
-.comments-box{
+.user-comment{
     display: grid;
     grid-template-columns: 65px auto;
     grid-template-rows: auto;
@@ -796,7 +796,7 @@ div[class^="stories-story"]:hover{
         color: #3B5998;
 
         .comment-like,
-        .comment-comment,
+        .comment-reply,
         .comment-time{
         padding: 2px;
         padding-top: 0px;
@@ -808,16 +808,44 @@ div[class^="stories-story"]:hover{
         };
 
         .comment-like:hover,
-        .comment-comment:hover{
+        .comment-reply:hover{
             cursor: pointer;
         }
         .comment-time{
             color: $color-gray;
         }
+    };
+    .reply-text{
+        grid-area: content;
+    };
+
+}
+.reply-input-box{
+    display: grid;
+    grid-template-areas: 
+    "profile input";
+    grid-template-columns: 13% 87%;
+    margin-top:10px;
+
+    .comment-reply-input{
+        grid-area: input;
+        height: 45px;
+        min-height: 45px;
+        resize: vertical;
+        align-self: center;
+
+
+    };
+
+    .post-profile{
+        grid-area: profile;
+
     }
 }
+// .reply-comment-box{
 
-
+    
+// }
 .hide{
  display: none !important
 }

@@ -1,4 +1,4 @@
-let spongeBob = new User("SpongeBob","SquarePants","pic/spongebob-profile.jpg");
+// let spongeBob = new User("SpongeBob","SquarePants","pic/spongebob-profile.jpg");
 let random = "";
 
 let lorem0 = "Per ei case tota doming, tantas corpora delicata te has? Ex eos integre torquatos, alii tollit ullamcorper his ad eu.";

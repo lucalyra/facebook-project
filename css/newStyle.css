@@ -1121,7 +1121,7 @@ div[class^="stories-story"]:hover {
 }
 
 /* line 747, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box {
+.user-comment {
   display: grid;
   grid-template-columns: 65px auto;
   grid-template-rows: auto;
@@ -1133,13 +1133,13 @@ div[class^="stories-story"]:hover {
 }
 
 /* line 761, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box .post-profile {
+.user-comment .post-profile {
   grid-area: picture;
   align-self: center;
 }
 
 /* line 766, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box .comment-content {
+.user-comment .comment-content {
   grid-area: content;
   margin: 5px;
   margin-left: 2px;
@@ -1149,7 +1149,7 @@ div[class^="stories-story"]:hover {
 }
 
 /* line 775, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box .username-commenting {
+.user-comment .username-commenting {
   grid-area: username;
   color: #3B5998;
   font-weight: bold;
@@ -1160,12 +1160,12 @@ div[class^="stories-story"]:hover {
 }
 
 /* line 786, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box .comment-time {
+.user-comment .comment-time {
   grid-area: time;
 }
 
 /* line 790, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box .comments-actions {
+.user-comment .comments-actions {
   grid-area: actions;
   display: flex;
   flex-direction: row;
@@ -1175,9 +1175,9 @@ div[class^="stories-story"]:hover {
 }
 
 /* line 798, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box .comments-actions .comment-like,
-.comments-box .comments-actions .comment-comment,
-.comments-box .comments-actions .comment-time {
+.user-comment .comments-actions .comment-like,
+.user-comment .comments-actions .comment-reply,
+.user-comment .comments-actions .comment-time {
   padding: 2px;
   padding-top: 0px;
   margin: 2px 0;
@@ -1188,17 +1188,44 @@ div[class^="stories-story"]:hover {
 }
 
 /* line 810, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box .comments-actions .comment-like:hover,
-.comments-box .comments-actions .comment-comment:hover {
+.user-comment .comments-actions .comment-like:hover,
+.user-comment .comments-actions .comment-reply:hover {
   cursor: pointer;
 }
 
 /* line 814, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
-.comments-box .comments-actions .comment-time {
+.user-comment .comments-actions .comment-time {
   color: rgba(94, 93, 93, 0.74902);
 }
 
-/* line 821, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
+/* line 818, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
+.user-comment .reply-text {
+  grid-area: content;
+}
+
+/* line 823, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
+.reply-input-box {
+  display: grid;
+  grid-template-areas: "profile input";
+  grid-template-columns: 13% 87%;
+  margin-top: 10px;
+}
+
+/* line 830, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
+.reply-input-box .comment-reply-input {
+  grid-area: input;
+  height: 45px;
+  min-height: 45px;
+  resize: vertical;
+  align-self: center;
+}
+
+/* line 840, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
+.reply-input-box .post-profile {
+  grid-area: profile;
+}
+
+/* line 849, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
 .hide {
   display: none !important;
 }
