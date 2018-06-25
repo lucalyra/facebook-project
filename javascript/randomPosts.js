@@ -31,6 +31,6 @@ function randomLorem(lorem){
         return lorem[random];
 };
 
-randomChoose();
+// randomChoose();
 
 

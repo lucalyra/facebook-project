@@ -363,11 +363,11 @@ class serverPost {
 
         let likesAmount = postBody.postLikes.querySelector(".likes-amount");
         likesAmount.innerHTML = this.likes;
-        postBody.hideLike();
+        postBody.hideLike(this.likes);
 
         let time = postBody.el.querySelector(".time-posting");
         time.innerHTML = this.time;
-        
+
         this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
     }
     
