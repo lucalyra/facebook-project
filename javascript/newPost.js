@@ -20,6 +20,7 @@ function time(){
     let time = hr + ":" + min;
     return  time;
 }
+
 //new post
 class Posting{
     constructor(postQuery, user){
@@ -92,73 +93,110 @@ class Body{
     constructor(text, user){
         this.el = document.createElement("div");
         this.el.classList.add("post");
-        this.el.innerHTML = //User posting
-            `<div class="user-posting">
-                <img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
+
+        this.userPosting = document.createElement("div");
+        this.userPosting.classList.add("user-posting");
+        this.userPosting.innerHTML = 
+            `<img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
             <div class="user-posting-name-time">
                 <span class="username-posting"> ${user.fullname}</span>
                 <span class="time-posting">${time()}</span>
                 <i class="fas fa-globe"></i>
-            </div>
-                <div class="post-user-options">
-                <i class="fas fa-ellipsis-h post-hover"></i>
-                <span class="cool-arrow-post"></span>
-            <div class="post-hover-box">
-                <span class="post-hover-options post-hover-delete">Delete</span>
-                <span class="post-hover-options post-hover-edit">Edit</span>
-                <span class="post-hover-options post-hover-something">Something</span>
-            </div>
-            </div>
             </div>`;
+        this.el.appendChild(this.userPosting);
+
         this.textEl = document.createElement("span");
         this.textEl.classList.add("post-content");
         this.textEl.innerHTML = text;
-        this.el.appendChild(this.textEl);
-        this.removeButton = this.el.querySelector('.post-hover-delete');
-        this.removeButton.addEventListener('click', () => this.remove());
+
+        this.userOptions = new UserOptions(this.el, this.textEl);
         
-        this.somethingButton = this.el.querySelector(".post-hover-something");
-        this.somethingButton.addEventListener('click', () => this.something());
+        this.userPosting.appendChild(this.userOptions.userOptions);
+        this.el.appendChild(this.textEl);
+   
+    };
 
-        this.editButton = this.el.querySelector(".post-hover-edit");
-        this.editButton.addEventListener('click', () => {
-            if( this.textEl.classList.contains("edit-active")){
-                this.textEl.classList.remove("edit-active");
-                this.el.replaceChild(this.textEl, this.editArea)
+};
+class UserOptions{
+    constructor(el,text){
+        this.userOptions = document.createElement("div");
+        this.userOptions.className = "post-user-options";
+        this.userOptions.innerHTML = 
+        `<i class="fas fa-ellipsis-h post-hover"></i>
+        <span class="cool-arrow-post"></span>
+        `;
+        this.hoverBox = document.createElement("div");
+        this.hoverBox.className = "post-hover-box";
+        this.userOptions.appendChild(this.hoverBox);
+
+        this.removeButton(el);
+        this.editButton(el,text);
+        this.somethingButton();
+    }
+    removeButton(el){
+        this.delete = document.createElement("span");
+        this.delete.classList.add("post-hover-options");
+        this.delete.classList.add("post-hover-delete");
+        this.delete.innerText = "Delete";
+        this.hoverBox.appendChild(this.delete);
+
+        this.delete.addEventListener('click', () => this.remove(el));
+    }
+    remove(el) {
+        el.parentNode.removeChild(el);
+    };
+
+    somethingButton(){
+        this.something = document.createElement("span");
+        this.something.classList.add("post-hover-options");
+        this.something.classList.add("post-hover-something");
+        this.something.innerText = "Something";
+        this.hoverBox.appendChild(this.something);
+
+        this.something.addEventListener('click', () => this.somethingAlert());
+    }
+    somethingAlert(){
+        alert("*** JUST SOMETHING! ***");
+    };
+
+    editButton(el,text){
+        this.edit = document.createElement("span");
+        this.edit.classList.add("post-hover-options");
+        this.edit.classList.add("post-hover-edit");
+        this.edit.innerText = "Edit";
+        this.hoverBox.appendChild(this.edit);
+
+        this.edit.addEventListener('click', () => {
+            if( text.classList.contains("edit-active")){
+                text.classList.remove("edit-active");
+                el.replaceChild(text, this.editArea)
                 } else {
-                    this.textEl.classList.add("edit-active");
-                    this.edit();
+                    text.classList.add("edit-active");
+                    this.editing(el,text);
                 }})
-    };
-
-    remove() {
-        this.el.parentNode.removeChild(this.el);
-    };
-  
-    something(){
-        alert("*** JUST SOMETHING! ***")
-    };
-
-    edit(){
+    }
+    
+    editing(el,text){
         this.editArea = document.createElement("textarea");
         this.editArea.classList.add("edit-active");
-        this.editArea.value = this.textEl.innerHTML;
-        this.el.replaceChild(this.editArea, this.textEl);
+        this.editArea.value = text.innerHTML;
+        el.replaceChild(this.editArea, text);
         this.editArea.focus();
         this.editArea.addEventListener('keypress', (event) => {
             if (event.keyCode == 10) { 
                 if(this.editArea.value == (this.editArea.keyCode == 13)){
                     alert("Looks like your post is empty, try writing something.");
                 } else {
-                this.textEl.innerHTML = this.editArea.value;
-                this.textEl.classList.remove("edit-active");
-                this.el.replaceChild(this.textEl, this.editArea);
+                    text.innerHTML = this.editArea.value;
+                    text.classList.remove("edit-active");
+                el.replaceChild(text, this.editArea);
                 }
             }
         }) 
     }
-};
+  
 
+}
 class Actions extends Body{
     constructor(text,user){
         super(text,user);
@@ -167,7 +205,7 @@ class Actions extends Body{
             this.postAction.classList.add("post-action");
             this.postAction.innerHTML =  
             `
-            <div class="post-like">
+            <div class="post-like" id="like-buttn">
                 <i class="far fa-thumbs-up"></i>
                 <span>Like</span>
             </div>
@@ -180,65 +218,48 @@ class Actions extends Body{
                 <span>Share</span>
             </div>
             `;
-
-            this.likeButton = this.postAction.querySelector(".post-like");
-            this.likeButton.addEventListener('click', () => this.like());
-
-            //likesAmount
             this.el.appendChild(this.postAction);
-            this.postLikes = document.createElement("div");
-            this.postLikes.classList.add("post-likes");
-            
-            this.postLikes.innerHTML = 
-            `<i class="fas fa-thumbs-up"></i>
-            `;
-            this.likesAmount = document.createElement("span");
-            this.likesAmount.classList.add("likes-amount");
-            this.likesAmount.innerHTML = 0;
-            this.hideLike(this.likesAmount.innerHTML);
-            this.postLikes.appendChild(this.likesAmount);
-            this.el.appendChild(this.postLikes);   
+
+            //likes
+            this.likes = new Likes(this.el, this.postAction);
+            this.likes.likeButton(this.postAction);
+            this.likes.likesAmount(this.el);
 
             //comments
-            this.commenting = document.createElement("div"); //create comments box
-            this.commenting.classList.add("post-commenting");
-            this.commenting.classList.add("hide"); //hide comments box
-            this.commenting.innerHTML = 
-            `<textarea class="commenting-textarea" placeholder="Commenting..."></textarea>
-                <span class="comment-button">Add Comment</span>
-                </div> `
-            this.el.appendChild(this.commenting);   
-
-            this.commentButton = this.postAction.querySelector(".post-comment"); //comment button
-            this.commentButton.addEventListener('click', () => this.openComments(user)); 
-            this.addComment = this.commenting.querySelector(".comment-button"); //add comment button
-            this.addComment.addEventListener('click', () => this.submitComment())
-
-            this.commentInput = this.commenting.querySelector(".commenting-textarea"); //send comment when press ctrl+enter
-            this.commentInput.addEventListener('keypress', (event) => {
-                if (event.keyCode == 10) { 
-                    this.submitComment()} else {return}});
+            this.comments = new Comments(this.el, this.postAction, username);
 
     };
+}
 
-    hideLike(value){ //check if there is more than 0 likes
-        if (value == 0){
-        this.postLikes.classList.add("hide")
-        } else { this.postLikes.classList.remove("hide") }
+class Comments{
+    constructor(el, postAction, user){
+        this.commenting = document.createElement("div"); //create comments box
+        this.commenting.classList.add("post-commenting");
+        this.commenting.classList.add("hide"); //hide comments box
+        this.commenting.innerHTML = 
+        `<textarea class="commenting-textarea" placeholder="Commenting..."></textarea>
+            <span class="comment-button">Add Comment</span>
+            </div> `
+        el.appendChild(this.commenting); 
+        this.commentButton(postAction);
+        this.submitButton(user);
     }
 
-    like(){ // add or remove likes and checks if there more than 0 likes
-        if(this.likeButton.classList.contains("clicked")){
-            this.likeButton.classList.remove("clicked");
-            this.likesAmount.innerHTML--;
-            this.hideLike(this.likesAmount.innerHTML);
-        } else {
-            this.likeButton.classList.add("clicked");
-            this.likesAmount.innerHTML++;
-            this.hideLike(this.likesAmount.innerHTML);
-        }
+    commentButton(postAction){
+        this.commentButton = postAction.querySelector(".post-comment"); //comment button
+        this.commentButton.addEventListener('click', () => this.openComments()); 
     };
 
+    submitButton(user){
+        this.addComment = this.commenting.querySelector(".comment-button"); //add comment button
+        this.addComment.addEventListener('click', () => this.submitComment(user));
+        
+        this.commentInput = this.commenting.querySelector(".commenting-textarea"); //send comment when press ctrl+enter
+        this.commentInput.addEventListener('keypress', (event) => {
+            if (event.keyCode == 10) { 
+                this.submitComment(user)} else {return}});
+    }
+    
     openComments(){ //open the comment container
         if(this.commenting.classList.contains("hide")){
             this.commentButton.classList.add("clicked");
@@ -251,7 +272,7 @@ class Actions extends Body{
 
     };
 
-    submitComment(){ //add new comment
+    submitComment(user){ //add new comment // ** need to make it shorter **
         this.commentInput = this.commenting.querySelector(".commenting-textarea");
         this.commentBox = document.createElement("div");
         this.commentBox.classList.add("comments-box");
@@ -259,21 +280,74 @@ class Actions extends Body{
         this.userComment.classList.add("user-comment");
         this.userComment.innerHTML = 
         `
-        <img src="${username.profilePic} " alt="${username.fullname} Profile" class="post-profile">
-        <span class="username-commenting"> ${username.fullname}</span>
-        <span class="comment-content"> ${this.commentInput.value} </span>
-        <div class="comments-actions">
-            <span class="comment-like">Like</span>
+        <img src="${user.profilePic} " alt="${user.fullname} Profile" class="post-profile">
+        <span class="username-commenting"> ${user.fullname}</span>`;
+
+        this.commentContent = document.createElement("span");
+        this.commentContent.className = "comment-content";
+        this.commentContent.innerText = this.commentInput.value;
+        this.userComment.appendChild(this.commentContent);
+
+        this.userOptions = new UserOptions(this.userComment, this.commentContent);
+        this.userComment.appendChild(this.userOptions.userOptions);
+
+        this.commentsActions = document.createElement("div");
+        this.commentsActions.classList.add("comments-actions");
+        this.commentsActions.innerHTML=
+            `<span class="comment-like" id="like-buttn">Like</span>
             <span class="comment-reply">Reply</span>
-            <span class="comment-time"> Now </span>
-        </div> `;
+            <span class="comment-time"> Now </span>`;
         this.commentBox.appendChild(this.userComment);
         this.commenting.appendChild(this.commentBox);
+        this.userComment.appendChild(this.commentsActions);
         this.commentInput.value = "";
         this.commentInput.blur();
+        this.commentLikes = new Likes;
+        this.commentLikes.likeButton(this.commentsActions);
+        this.commentLikes.likesAmount(this.userComment);
 
     };
- 
+}
+
+class Likes{
+    constructor(){
+        this.postLikes = document.createElement("div");
+        this.postLikes.classList.add("likes");
+        this.postLikes.innerHTML = 
+        `<i class="fas fa-thumbs-up"></i>`;
+    }
+
+    likeButton(postAction){
+        this.likeButton = postAction.querySelector("#like-buttn");
+        this.likeButton.addEventListener('click', () => this.like());
+    }
+
+    likesAmount(el){ //standart likes amount for new post
+            this.likesAmount = document.createElement("span");
+            this.likesAmount.classList.add("likes-amount");
+            this.likesAmount.innerHTML = 0;
+            this.hideLike(this.likesAmount.innerHTML);
+            this.postLikes.appendChild(this.likesAmount);
+            el.appendChild(this.postLikes);   
+    }
+    
+    hideLike(value){ //check if there is more than 0 likes
+        if (value == 0){
+        this.postLikes.classList.add("hide")
+        } else { this.postLikes.classList.remove("hide") }
+    }
+    
+    like(){ // add or remove likes and checks if there more than 0 likes
+        if(this.likeButton.classList.contains("clicked")){
+            this.likeButton.classList.remove("clicked");
+            this.likesAmount.innerHTML--;
+            this.hideLike(this.likesAmount.innerHTML);
+        } else {
+            this.likeButton.classList.add("clicked");
+            this.likesAmount.innerHTML++;
+            this.hideLike(this.likesAmount.innerHTML);
+        }
+    };
 }
 
 class Response { // ** WORKING ON IT **
@@ -332,43 +406,50 @@ class Response { // ** WORKING ON IT **
         this.replyBoxStyle = parseInt(window.getComputedStyle(this.newBox.previousSibling).marginLeft,10);
         this.newBox.style.marginLeft = this.replyBoxStyle + 15 + "px";
         this.commentBox.removeChild(oldBox);
-        
+
         this.replyButton = this.newBox.querySelector(".comment-reply");
         this.replyButton.addEventListener("click", () => this.openReply())
 
     }
 }
+
 fetch('http://127.0.0.1:3000')
-  .then((data) => {
-    data.json()
+  .then((response) => {
+    response.json()
       .then((res) => {
         res.posts.forEach(elm => {
             let user = new User(elm.firstName, elm.lastName, elm.profile)
-            new serverPost(elm.message, user, elm.likes, elm.time).createPost();
+            new serverPost(elm.message, user, elm.likes, elm.time,elm.useId).createPost();
         });
       });
   });
 
 
 class serverPost {
-    constructor(text, user, likes, time){
+    
+    constructor(text, user, likes, time, id){
+        this.id = id;
         this.user = user;
         this.message = text;
         this.likes = likes;
         this.time = time;
+        // this.comments = comments;
         this.postQuery = document.querySelector(".posted");
     }
+
     createPost(){
         let postBody = new Actions(this.message, this.user);
 
-        let likesAmount = postBody.postLikes.querySelector(".likes-amount");
+        let likesAmount = postBody.likes.postLikes.querySelector(".likes-amount");
         likesAmount.innerHTML = this.likes;
-        postBody.hideLike(this.likes);
+        postBody.likes.hideLike(this.likes);
 
         let time = postBody.el.querySelector(".time-posting");
         time.innerHTML = this.time;
 
         this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
+        
+        //still need to add comments
     }
     
 }

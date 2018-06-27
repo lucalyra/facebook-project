@@ -6,6 +6,7 @@ let app = http.createServer((req, res) => {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   });
+
   let usersPosts = {
     posts: [
       {
@@ -14,15 +15,15 @@ let app = http.createServer((req, res) => {
         profile: "https://randomuser.me/api/portraits/men/23.jpg",
         message: "Per ei case tota doming, tantas corpora delicata te has? Ex eos integre torquatos, alii tollit ullamcorper his ad eu.",
         likes: 10,
-        time: "10:43" 
+        time: "10:43"
       },
       {
         firstName: "SomeGuy",
         lastName: "2",
-        profile: "https://randomuser.me/api/portraits/men/22.jpg",
+        profile: "https://ranDomuser.me/api/portraits/men/22.jpg",
         message: "Lorem ipsum dolor sit amet, pro dolorem adipiscing id, te his quas melius offendit. Illum quando euripidis et vim, te.",
         likes: 0,
-        time: "21:03" 
+        time: "21:03"
       },
       {
         firstName: "SomeGuy",
@@ -30,7 +31,7 @@ let app = http.createServer((req, res) => {
         profile: "https://randomuser.me/api/portraits/men/21.jpg",
         message: "Tollit scripta sapientem eam ex, dico labitur repudiare ei nec, pro harum comprehensam te? Sea te populo feugiat, ea labores.",
         likes: 13,
-        time: "00:01" 
+        time: "00:01"
       }
     ]
   };
