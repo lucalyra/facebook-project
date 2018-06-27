@@ -856,9 +856,11 @@ div[class^="stories-story"]:hover{
         grid-area: options;
         display: flex;
         position: relative;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         cursor: pointer;
+        margin-right: 25px;
+        margin-top: 5px;
 
         .post-hover-box{
             display:none;
@@ -873,8 +875,8 @@ div[class^="stories-story"]:hover{
         }
         &:hover .post-hover-box {
             position: absolute;
-            left: -140%;
-            top: -2%;
+            left: -107%;
+            top: -27%;
             padding: 0px 5px;
             border: 1px solid #dddddd;
             border-radius: 10px;
@@ -893,8 +895,8 @@ div[class^="stories-story"]:hover{
             border-left: 6px solid #dddddd;
             border-top: 6px solid transparent;
             border-bottom: 6px solid transparent;
-            left: 34px;
-            top: 6px;
+            left: 73px;
+            top: 3px;
             font-size: 0;
             height: 0;
             line-height: 0;
@@ -918,6 +920,7 @@ div[class^="stories-story"]:hover{
             padding: 1px 5px;
             border-radius: 2px;
             font-weight: bold;
+            text-align: center;
 
             &:hover{
                 background-color:#cccccc;
