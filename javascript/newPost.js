@@ -243,6 +243,7 @@ class Comments{
         el.appendChild(this.commenting); 
         this.commentButton(postAction);
         this.submitButton(user);
+        this.commentInput = this.commenting.querySelector(".commenting-textarea");
     }
 
     commentButton(postAction){
@@ -273,7 +274,6 @@ class Comments{
     };
 
     submitComment(user){ //add new comment // ** need to make it shorter **
-        this.commentInput = this.commenting.querySelector(".commenting-textarea");
         this.commentBox = document.createElement("div");
         this.commentBox.classList.add("comments-box");
         this.userComment = document.createElement("div");
@@ -290,25 +290,65 @@ class Comments{
 
         this.userOptions = new UserOptions(this.userComment, this.commentContent);
         this.userComment.appendChild(this.userOptions.userOptions);
-
-        this.commentsActions = document.createElement("div");
-        this.commentsActions.classList.add("comments-actions");
-        this.commentsActions.innerHTML=
-            `<span class="comment-like" id="like-buttn">Like</span>
-            <span class="comment-reply">Reply</span>
-            <span class="comment-time"> Now </span>`;
         this.commentBox.appendChild(this.userComment);
+
+        this.commentActions = new CommentsActions(this.userComment, this.commentBox); 
+
         this.commenting.appendChild(this.commentBox);
-        this.userComment.appendChild(this.commentsActions);
+        this.userComment.appendChild(this.commentActions.commentsActions);
+        
         this.commentInput.value = "";
         this.commentInput.blur();
-        this.commentLikes = new Likes;
-        this.commentLikes.likeButton(this.commentsActions);
-        this.commentLikes.likesAmount(this.userComment);
-
     };
+
+
+
 }
 
+class CommentsActions{
+    constructor(userComment,commentBox){
+    this.commentsActions = document.createElement("div");
+    this.commentsActions.classList.add("comments-actions");
+
+    this.createLikes(userComment);
+    this.createReply(commentBox,this.commentsActions);
+    this.createTime();
+    }
+
+    createLikes(userComment){
+        this.commentLike = document.createElement("span");
+        this.commentLike.className = "comment-like";
+        this.commentLike.id = "like-buttn";
+        this.commentLike.innerHTML = "Like";
+        this.commentsActions.appendChild(this.commentLike);
+        this.likes(userComment);
+    }
+    likes(userComment){
+        this.commentLikes = new Likes;
+        this.commentLikes.likeButton(this.commentsActions);
+        this.commentLikes.likesAmount(userComment);
+    }
+
+    createReply(commentBox,commentsActions){
+        this.commentReply = document.createElement("span");
+        this.commentReply.className = "comment-reply";
+        this.commentReply.id = "reply-buttn";
+        this.commentReply.innerHTML = "Reply";
+        this.commentsActions.appendChild(this.commentReply);
+        this.reply(commentBox,this.commentReply,commentsActions);
+
+    }
+    reply(commentBox,userComment,commentsActions){
+        this.newReply = new Reply(commentBox,userComment,commentsActions);
+        
+    }
+    createTime(){
+        this.commentTime = document.createElement("span");
+        this.commentTime.className = "comment-time";
+        this.commentTime.innerHTML = "Now";
+        this.commentsActions.appendChild(this.commentTime);
+    }
+}
 class Likes{
     constructor(){
         this.postLikes = document.createElement("div");
@@ -350,68 +390,117 @@ class Likes{
     };
 }
 
-class Response { // ** WORKING ON IT **
-    constructor(user,comment){
-        this.fullname = user.fullname;
-        this.profilePic = user.profilePic;
-        this.commentBox = comment
-        this.replyButton = this.commentBox.querySelector(".comment-reply");
-        this.replyButton.addEventListener("click", () => this.openReply(this.replyButton))
+class Reply{
+    constructor(commentBox,commentReply,commentsActions){
+        this.commentReply = commentReply;
+        this.commentsActions = commentsActions;
+        this.commentBox = commentBox;
+        this.createReplyBox();
+        this.replyButton();
+
     }
+    replyButton(){
+     this.commentReply.addEventListener('click', ()=> this.openReply())
+        // this.replyButton.addEventListener('click', () => console.log("yay"));
+    }
+    openReply(){
+        this.inputBox = document.createElement("div");
+        this.inputBox.className = "reply-input-box";
 
-    openReply(replyButton){
+        this.profilePic = document.createElement("img");
+        this.profilePic.className = "post-profile";
+        this.profilePic.src = username.profilePic;
 
-        this.inputReplyBox = document.createElement("div");
-        this.inputReplyBox.classList.add("reply-input-box");
-        this.replyProfile = document.createElement("img");
-        this.replyProfile.classList.add("post-profile");
-        this.replyProfile.src = this.profilePic;
-        this.input = document.createElement("textarea");
-        this.input.classList.add("comment-reply-input");
-        this.input.placeholder = "Reply";
-        this.inputReplyBox.appendChild(this.replyProfile);
-        this.inputReplyBox.appendChild(this.input);
-        this.commentBox.appendChild(this.inputReplyBox);
-        this.replyBoxStyle = parseInt(window.getComputedStyle(this.inputReplyBox.previousSibling).marginLeft,10);
-        this.inputReplyBox.style.marginLeft = this.replyBoxStyle + 15 + "px";
-        this.input.addEventListener('keypress', (event) => {
+        this.userReplying = document.createElement("span");
+        this.userReplying.className = "user-reply-name";
+        this.userReplying.innerHTML = username.fullname;
+
+        this.textInput = document.createElement("textarea");
+        this.textInput.className = "reply-input";
+        this.textInput.placeholder = "Replying...";
+
+        this.inputBox.appendChild(this.profilePic);
+        this.inputBox.appendChild(this.userReplying);
+        this.inputBox.appendChild(this.textInput);
+        this.replyBox.appendChild(this.inputBox);
+
+        this.submitReply()
+        this.cancelReply()
+        this.applyReplyMargin()
+
+
+    }
+    submitReply(){
+        this.textInput.addEventListener('keypress', (event) => {
             if (event.keyCode == 10) { 
-                this.submitReply(this.input.value,this.replyProfile, this.inputReplyBox)} else {return}});
+                if(this.textInput.value == (this.textInput.keyCode == 13)){
+                    alert("Looks like your post is empty, try writing something.")
+                } else {
+                    this.newReply();
+    }}})}
+
+    cancelReply(){
+        this.textInput.addEventListener('keyup', (event) => {
+            if(event.keyCode == 27){
+                this.deleteInputBox();
+            };
+    })};
+
+    deleteInputBox(){
+        this.inputBox.parentNode.removeChild(this.inputBox)
+    }
+
+    newReply(){
+        this.text = this.textInput.value;
+
+        this.reply = document.createElement("div");
+        this.reply.className = "reply";
+        this.applyReplyMargin()
+
+        this.profilePic = document.createElement("img");
+        this.profilePic.className = "post-profile";
+        this.profilePic.src = username.profilePic;
+
+        this.userReplying = document.createElement("span");
+        this.userReplying.className = "user-reply-name";
+        this.userReplying.innerHTML = username.fullname;
+
+        this.replyContent = document.createElement("span");
+        this.replyContent.className = "reply-content";
+        this.replyContent.innerHTML = this.text;
+
+        this.reply.appendChild(this.profilePic);
+        this.reply.appendChild(this.userReplying);
+        this.reply.appendChild(this.replyContent);
+        this.replyBox.appendChild(this.reply);
+
+  
+        this.addReplyActions()
+        this.deleteInputBox();
+        this.userOptions = new UserOptions(this.reply, this.replyContent);
+        this.reply.appendChild(this.userOptions.userOptions);
+
 
     }
 
-    submitReply(input,profile,oldBox){
-        this.newBox = document.createElement("div");
-        this.newBox.classList.add("user-comment");
-        this.replyText = document.createElement("span");
-        this.replyText.classList.add("comment-content");
-        this.replyText.innerText = input;
-        this.replyUser= document.createElement("span");
-        this.replyUser.classList.add("username-commenting");
-        this.replyUser.innerText = username.fullname;
-        this.replyProfile = profile;
-        this.replyAction = document.createElement("div");
-        this.replyAction.classList.add("comments-actions");
-        this.replyAction.innerHTML = `
-       <div class="comments-actions">
-            <span class="comment-like">Like</span>
-            <span class="comment-reply">Reply</span>
-            <span class="comment-time"> Now </span>
-        </div> `;
-        this.newBox.appendChild(this.replyAction);
-        this.newBox.appendChild(this.replyText);
-        this.newBox.appendChild(this.replyUser);
-        this.newBox.appendChild(this.replyProfile);
-        this.commentBox.appendChild(this.newBox);
-        this.replyBoxStyle = parseInt(window.getComputedStyle(this.newBox.previousSibling).marginLeft,10);
-        this.newBox.style.marginLeft = this.replyBoxStyle + 15 + "px";
-        this.commentBox.removeChild(oldBox);
+    addReplyActions(){
+        this.replyActions = new CommentsActions(this.reply, this.replyBox); 
+        this.reply.appendChild(this.replyActions.commentsActions);
+    }
 
-        this.replyButton = this.newBox.querySelector(".comment-reply");
-        this.replyButton.addEventListener("click", () => this.openReply())
+    createReplyBox(){
+        this.replyBox = document.createElement("div");
+        this.replyBox.className = "reply-box";
+        this.commentBox.appendChild(this.replyBox); 
+    }
 
+    applyReplyMargin(){
+        this.replyBoxStyle = parseInt(window.getComputedStyle(this.replyBox.previousSibling).marginLeft,10);
+        this.replyBox.style.marginLeft = this.replyBoxStyle + 15 + "px";
     }
 }
+
+
 
 fetch('http://127.0.0.1:3000')
   .then((response) => {
