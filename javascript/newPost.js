@@ -407,15 +407,18 @@ class Reply{
 
     checkIfOpen(){
         this.child = (this.commentBox.childNodes.length - 1)
-        console.log(this.commentBox.childNodes[this.child]);
-        console.log(this.child, "child");
-        if(this.commentBox.childNodes[this.child].classList.contains("reply-box")){
-            this.commentBox.removeChild[this.child];
+        
+        if(this.commentBox.childNodes[this.child].firstChild.className == "reply-input-box"){
+
+            console.log( this.child + "-1")
+            console.log(this.commentBox.childNodes)
+            this.commentBox.removeChild(this.commentBox.childNodes[this.child]);
+          
         } else {
             this.openReply()
         }
     }
-    
+
     openReply(){
         this.createReplyBox();
         this.inputBox = document.createElement("div");
