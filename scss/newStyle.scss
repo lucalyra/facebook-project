@@ -715,7 +715,6 @@ div[class^="stories-story"]:hover{
     border: 1px solid $border-color;
     border-left: 0px;
     border-right: 0px;
-    max-height: 510px;
     width: 500px;
     overflow: hidden;
 
@@ -995,7 +994,23 @@ div[class^="stories-story"]:hover{
         margin-left: 11px;
         margin-top: 3px;
         margin-bottom: 8px;
+    
+        .fa-thumbs-up {
+        background-color: #3B5998;
+        color: white;
+        border: 0px solid black;
+        border-radius: 6px;
+        padding: 3px;
+        font-size: 7px;
     }
+    .likes-amount{
+        color:  #3B5998;
+        font-size: 11px;
+        padding-left:4px;
+
+
+    }
+}
     .comments-actions{
         grid-area: actions;
         display: flex;
@@ -1014,7 +1029,13 @@ div[class^="stories-story"]:hover{
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
         };
+        .comment-time{
+        color: $color-gray;
+        cursor: auto;
+        }
+
         
     & > .post-user-options{
         grid-area: options;

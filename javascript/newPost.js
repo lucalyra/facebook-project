@@ -396,15 +396,28 @@ class Reply{
         this.commentReply = commentReply;
         this.commentsActions = commentsActions;
         this.commentBox = commentBox;
-        this.createReplyBox();
         this.replyButton();
+
+
 
     }
     replyButton(){
-     this.commentReply.addEventListener('click', ()=> this.openReply())
-        // this.replyButton.addEventListener('click', () => console.log("yay"));
+     this.commentReply.addEventListener('click', ()=> this.checkIfOpen())
     }
+
+    checkIfOpen(){
+        this.child = (this.commentBox.childNodes.length - 1)
+        console.log(this.commentBox.childNodes[this.child]);
+        console.log(this.child, "child");
+        if(this.commentBox.childNodes[this.child].classList.contains("reply-box")){
+            this.commentBox.removeChild[this.child];
+        } else {
+            this.openReply()
+        }
+    }
+    
     openReply(){
+        this.createReplyBox();
         this.inputBox = document.createElement("div");
         this.inputBox.className = "reply-input-box";
 
@@ -424,11 +437,10 @@ class Reply{
         this.inputBox.appendChild(this.userReplying);
         this.inputBox.appendChild(this.textInput);
         this.replyBox.appendChild(this.inputBox);
-
+        
         this.submitReply()
         this.cancelReply()
         this.applyReplyMargin()
-
 
     }
     submitReply(){
@@ -497,7 +509,7 @@ class Reply{
     }
 
     applyReplyMargin(){
-        this.replyBoxStyle = parseInt(window.getComputedStyle(this.replyBox.previousSibling).marginLeft,10);
+        this.replyBoxStyle = parseInt(window.getComputedStyle( this.commentBox.firstChild).marginLeft,10);
         this.replyBox.style.marginLeft = this.replyBoxStyle + 15 + "px";
     }
 }
