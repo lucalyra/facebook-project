@@ -441,6 +441,7 @@ class Reply{
         this.inputBox.appendChild(this.textInput);
         this.replyBox.appendChild(this.inputBox);
         
+        this.textInput.focus();
         this.submitReply()
         this.cancelReply()
         this.applyReplyMargin()
@@ -512,8 +513,8 @@ class Reply{
     }
 
     applyReplyMargin(){
-        this.replyBoxStyle = parseInt(window.getComputedStyle( this.commentBox.firstChild).marginLeft,10);
-        this.replyBox.style.marginLeft = this.replyBoxStyle + 15 + "px";
+        this.replyBoxStyle = parseInt(window.getComputedStyle( this.commentBox.firstChild).paddingLeft,10);
+        this.replyBox.style.paddingLeft = this.replyBoxStyle + 15 + "px";
     }
 }
 

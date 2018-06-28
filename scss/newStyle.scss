@@ -965,6 +965,7 @@ div[class^="stories-story"]:hover{
     "picture content content content content" 
     "picture actions actions actions time" 
     "likes likes likes likes likes";
+    border-left: 0.5px solid $color-gray;
 
     .post-profile{
         grid-area: picture;
@@ -1004,11 +1005,9 @@ div[class^="stories-story"]:hover{
         font-size: 7px;
     }
     .likes-amount{
-        color:  #3B5998;
         font-size: 11px;
-        padding-left:4px;
-
-
+        color: #3B5998;
+        margin-left: 2px;
     }
 }
     .comments-actions{
