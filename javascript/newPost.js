@@ -110,7 +110,8 @@ class Body{
         this.textEl.innerHTML = text;
 
         this.userOptions = new UserOptions(this.el, this.textEl);
-        
+        this.userOptions.removeButton(this.el);
+
         this.userPosting.appendChild(this.userOptions.userOptions);
         this.el.appendChild(this.textEl);
    
@@ -129,21 +130,20 @@ class UserOptions{
         this.hoverBox.className = "post-hover-box";
         this.userOptions.appendChild(this.hoverBox);
 
-        this.removeButton(el);
         this.editButton(el,text);
         this.somethingButton();
     }
-    removeButton(el){
+    removeButton(boxToDelete){
         this.delete = document.createElement("span");
         this.delete.classList.add("post-hover-options");
         this.delete.classList.add("post-hover-delete");
         this.delete.innerText = "Delete";
         this.hoverBox.appendChild(this.delete);
 
-        this.delete.addEventListener('click', () => this.remove(el));
+        this.delete.addEventListener('click', () => this.remove(boxToDelete));
     }
-    remove(el) {
-        el.parentNode.removeChild(el);
+    remove(boxToDelete) {
+        boxToDelete.parentNode.removeChild(boxToDelete);
     };
 
     somethingButton(){
@@ -289,6 +289,7 @@ class Comments{
         this.userComment.appendChild(this.commentContent);
 
         this.userOptions = new UserOptions(this.userComment, this.commentContent);
+        this.userOptions.removeButton(this.commentBox);
         this.userComment.appendChild(this.userOptions.userOptions);
         this.commentBox.appendChild(this.userComment);
 
@@ -478,13 +479,14 @@ class Reply{
         this.addReplyActions()
         this.deleteInputBox();
         this.userOptions = new UserOptions(this.reply, this.replyContent);
+        this.userOptions.removeButton(this.replyBox);
         this.reply.appendChild(this.userOptions.userOptions);
 
 
     }
 
     addReplyActions(){
-        this.replyActions = new CommentsActions(this.reply, this.replyBox); 
+        this.replyActions = new CommentsActions(this.reply, this.replyBox);
         this.reply.appendChild(this.replyActions.commentsActions);
     }
 
