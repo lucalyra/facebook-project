@@ -1357,7 +1357,7 @@ div[class^="stories-story"]:hover {
 .reply {
   display: grid;
   margin-top: 2px;
-  grid-template-columns: 65px auto;
+  grid-template-columns: 65px auto auto auto 50px;
   grid-template-rows: auto;
   grid-template-areas: "picture username username username options"  "picture content content content content"  "picture actions actions actions time"  "likes likes likes likes likes";
   border-left: 0.5px solid rgba(94, 93, 93, 0.74902);
@@ -1477,7 +1477,7 @@ div[class^="stories-story"]:hover {
 /* line 1060, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */
 .reply > .post-user-options:hover .post-hover-box {
   position: absolute;
-  left: -107%;
+  right: 73%;
   top: -27%;
   padding: 0px 5px;
   border: 1px solid #dddddd;
@@ -1498,7 +1498,7 @@ div[class^="stories-story"]:hover {
   border-left: 6px solid #dddddd;
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
-  left: 73px;
+  left: 6px;
   top: 3px;
   font-size: 0;
   height: 0;
