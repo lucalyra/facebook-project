@@ -169,6 +169,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
  
     &:hover .title,{
     font-size: 12px;
@@ -186,4 +187,56 @@
  .header-media-cont,
  .header-media{
     display: none;
+}
+
+.more-options-box{
+   position: absolute;
+   top: 2px;
+   right: 54.5px;
+    .cool-arrow-post{
+        top: 20px;
+        left: 35px;
+        border-bottom: 8px solid #dddddd;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        z-index: 110;
+        
+        &::after {
+            border-bottom: 8px solid #eeeeee;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            left: -8px;
+            top: 2px;
+            content: " ";
+            position: absolute;
+        }
+    } 
+}
+.more-options-tab{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color:#eeeeee;
+    top: 27px;
+    z-index: 101;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+
+    span[class^="more-options"]{
+        padding: 5px;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover{
+            background-color:#cccccc;
+ 
+        }
+    }
+
 }

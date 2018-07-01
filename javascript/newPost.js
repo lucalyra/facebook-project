@@ -28,7 +28,6 @@ function updateUserPage(){
     let postBoxHolder = document.querySelector(".post-box-input");
     postBoxHolder.placeholder = `What's on your mind, ${username.name}?`;
 }
-
 checkLogin();
 updateUserPage();
 // let username = new User('Lucas','Lyra', "pic/profile.jpg");
@@ -41,6 +40,37 @@ function time(){
     let time = hr + ":" + min;
     return  time;
 }
+
+class MoreOptions{
+    constructor(){
+        this.moreOptions = document.querySelector(".more-options");
+        this.moreButton = document.querySelector(".more-button")
+        this.moreBox = document.querySelector(".more-options-box");
+        this.logoutButton = document.querySelector(".more-options-logout");
+        this.openMore()
+        this.logoutActivate()
+    }
+
+    openMore(){
+        this.moreButton.addEventListener("click",() => { if( this.moreBox.classList.contains("hide") ) {
+            this.moreBox.classList.remove("hide")
+        } else { this.moreBox.classList.add("hide") }
+         } ) }
+    
+    logoutActivate(){
+        this.logoutButton.addEventListener("click", () => this.logout())
+    }
+
+    logout(){
+        console.log("aa");
+        window.location.href = "login.html";
+        window.localStorage.removeItem('firstName');
+        window.localStorage.removeItem('lastName');
+    }
+}
+new MoreOptions
+
+
 
 //new post
 class Posting{
