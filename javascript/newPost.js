@@ -10,19 +10,28 @@ class User{
     }
 
 }
+
 function checkLogin(){
 if(window.localStorage.firstName == null || window.localStorage.lastName == null){
     window.location.href = "login.html"
 } else { return }
 }
+let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), "pic/giraffe.jpg");
 
-let username = new User('Lucas','Lyra', "pic/profile.jpg");
+function updateUserPage(){
+    let profilePic = document.querySelectorAll("#profilePic");
+    profilePic.forEach((profile) => profile.src = username.profilePic)
+    let firstName = document.querySelectorAll("#firstName");
+    firstName.forEach((name) => name.innerText = username.name)
+    let lastName = document.querySelectorAll("#lastName");
+    lastName.forEach((name) => name.innerText = username.lastname);
+    let postBoxHolder = document.querySelector(".post-box-input");
+    postBoxHolder.placeholder = `What's on your mind, ${username.name}?`;
+}
 
-
-// let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), "pic/profile.jpg");
-// checkLogin();
-// window.localStorage.removeItem('firstName');
-// window.localStorage.removeItem('lastName');
+checkLogin();
+updateUserPage();
+// let username = new User('Lucas','Lyra', "pic/profile.jpg");
 
 function time(){
     let d = new Date();
