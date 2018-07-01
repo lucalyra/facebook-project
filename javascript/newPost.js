@@ -8,15 +8,27 @@ class User{
     get fullname(){
         return `${this.name} ${this.lastname}`;
     }
-}
-let username = new User("Lucas", "Lyra", "pic/profile.jpg")
 
+}
+function checkLogin(){
+if(window.localStorage.firstName == null || window.localStorage.lastName == null){
+    window.location.href = "login.html"
+} else { return }
+}
+
+let username = new User('Lucas','Lyra', "pic/profile.jpg");
+
+
+// let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), "pic/profile.jpg");
+// checkLogin();
+// window.localStorage.removeItem('firstName');
+// window.localStorage.removeItem('lastName');
 
 function time(){
     let d = new Date();
     let day = d.getDay();
     let hr = d.getHours();
-    let min = d.getMinutes();
+    let min = (d.getMinutes()<10?'0':'') + d.getMinutes()
     let time = hr + ":" + min;
     return  time;
 }
@@ -200,33 +212,33 @@ class UserOptions{
 class Actions extends Body{
     constructor(text,user){
         super(text,user);
-            //like, comments, share
-            this.postAction = document.createElement("div");
-            this.postAction.classList.add("post-action");
-            this.postAction.innerHTML =  
-            `
-            <div class="post-like" id="like-buttn">
-                <i class="far fa-thumbs-up"></i>
-                <span>Like</span>
-            </div>
-            <div class="post-comment">
-                <i class="far fa-comment-alt"></i>
-                <span>Comment</span>
-            </div>
-            <div class="post-share">
-                <i class="fas fa-share"></i>
-                <span>Share</span>
-            </div>
-            `;
-            this.el.appendChild(this.postAction);
+        //like, comments, share
+        this.postAction = document.createElement("div");
+        this.postAction.classList.add("post-action");
+        this.postAction.innerHTML =  
+        `
+        <div class="post-like" id="like-buttn">
+            <i class="far fa-thumbs-up"></i>
+            <span>Like</span>
+        </div>
+        <div class="post-comment">
+            <i class="far fa-comment-alt"></i>
+            <span>Comment</span>
+        </div>
+        <div class="post-share">
+            <i class="fas fa-share"></i>
+            <span>Share</span>
+        </div>
+        `;
+        this.el.appendChild(this.postAction);
 
-            //likes
-            this.likes = new Likes(this.el, this.postAction);
-            this.likes.likeButton(this.postAction);
-            this.likes.likesAmount(this.el);
+        //likes
+        this.likes = new Likes(this.el, this.postAction);
+        this.likes.likeButton(this.postAction);
+        this.likes.likesAmount(this.el);
 
-            //comments
-            this.comments = new Comments(this.el, this.postAction, username);
+        //comments
+        this.comments = new Comments(this.el, this.postAction, username);
 
     };
 }
@@ -526,7 +538,7 @@ fetch('http://127.0.0.1:3000')
       .then((res) => {
         res.posts.forEach(elm => {
             let user = new User(elm.firstName, elm.lastName, elm.profile)
-            new serverPost(elm.message, user, elm.likes, elm.time,elm.useId).createPost();
+            new serverPost(elm.message, user, elm.likes, elm.time).createPost();
         });
       });
   });
@@ -534,8 +546,7 @@ fetch('http://127.0.0.1:3000')
 
 class serverPost {
     
-    constructor(text, user, likes, time, id){
-        this.id = id;
+    constructor(text, user, likes, time){
         this.user = user;
         this.message = text;
         this.likes = likes;
@@ -555,12 +566,64 @@ class serverPost {
         time.innerHTML = this.time;
 
         this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
-        
-        //still need to add comments
     }
     
 }
+
 new Posting(document.querySelector(".posted"), username);
 
+class UserService{
+    getUser(id){
+        return fetch('https://jsonplaceholder.typicode.com/users/' + id)
+            .then(res => res.json())
+            .then(info => new CatchUser(info))
+            .then(user => localStorage.setItem("user", JSON.stringify(user)))
+            .catch(() => JSON.parse(localStorage.getItem("user")))
+
+    }
+}
+
+class PostService{
+    getPosts(userId) {
+        return fetch('https://jsonplaceholder.typicode.com/posts/?userId=' + userId)
+            .then(res => res.json())
+            .then(posts => posts[0].body)
+            .then(post => localStorage.setItem("post", JSON.stringify(post)))
+            .catch(() => JSON.parse(localStorage.getItem("post")))
+    }
+}
+class CatchUser{
+    constructor(user){
+        this.fullname = user.name;
+        this.profilePic = "pic/giraffe.jpg";
+    }
+}
+
+let userService = new UserService;
+let postService = new PostService;
+
+class FetchPost{
+    constructor(userId){
+        this.userId = userId;
+        this.fetchUser();
+    }
+
+    fetchUser(){
+        userService
+            .getUser(this.userId)
+            .then(() => this.fetchPost())
+    }
+
+    fetchPost(){
+        postService
+            .getPosts(this.userId)
+            .then(this.newPost())
+    }
+
+    newPost(){
+        new serverPost(JSON.parse(localStorage.getItem("post")), JSON.parse(localStorage.getItem("user")), 10, time()).createPost()
+    }
+}
 
 
+let create = new FetchPost(10)
