@@ -11,25 +11,9 @@ class User{
 
 }
 
-function checkLogin(){
-if(window.localStorage.firstName == null || window.localStorage.lastName == null){
-    window.location.href = "login.html"
-} else { return }
-}
 let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), localStorage.getItem('profilePic'));
 
-function updateUserPage(){
-    let profilePic = document.querySelectorAll("#profilePic");
-    profilePic.forEach((profile) => profile.src = username.profilePic)
-    let firstName = document.querySelectorAll("#firstName");
-    firstName.forEach((name) => name.innerText = username.name)
-    let lastName = document.querySelectorAll("#lastName");
-    lastName.forEach((name) => name.innerText = username.lastname);
-    let postBoxHolder = document.querySelector(".post-box-input");
-    postBoxHolder.placeholder = `What's on your mind, ${username.name}?`;
-}
-checkLogin();
-updateUserPage();
+;
 // let username = new User('Lucas','Lyra', "pic/profile.jpg");
 
 function time(){
