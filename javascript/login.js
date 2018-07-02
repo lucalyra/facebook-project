@@ -25,13 +25,12 @@ class Login{
     loginPic(){
         this.pictureOpt = document.querySelectorAll("#loginPic");
         window.localStorage.setItem('profilePic', this.pictureOpt[0].value)
-        this.pictureOpt.forEach( (pic) => { pic.addEventListener('click',() => this.picListener(pic)) } )
-        
+        this.pictureOpt.forEach( (pic) => { pic.addEventListener('click',() => this.picListener(pic.value)) } )
 
     }
 
     picListener(pic){
-        window.localStorage.setItem('profilePic', pic.value)
+        window.localStorage.setItem('profilePic', pic)
     }
 }
 

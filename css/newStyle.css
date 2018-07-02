@@ -207,18 +207,18 @@
 }
 
 .more-options-box .cool-arrow-post {
-  top: 20px;
+  top: 19.5px;
   left: 35px;
-  border-bottom: 8px solid #dddddd;
+  border-bottom: 8px solid white;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   z-index: 110;
 }
 
 .more-options-box .cool-arrow-post::after {
-  border-bottom: 8px solid #eeeeee;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
+  border-bottom: 0px solid white;
+  border-left: 0px solid transparent;
+  border-right: 0px solid transparent;
   left: -8px;
   top: 2px;
   content: " ";
@@ -229,19 +229,31 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: #eeeeee;
+  background-color: white;
   top: 27px;
+  right: -64px;
   z-index: 101;
   border: 1px solid #dddddd;
-  border-radius: 10px;
+  border-radius: 2px;
   box-sizing: border-box;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
+  box-shadow: 3px 4px 11px 0px #888888;
+  width: 140px;
+}
+
+.more-options-tab :first-child {
+  margin-top: 5px;
+}
+
+.more-options-tab :last-child {
+  margin-bottom: 5px;
 }
 
 .more-options-tab span[class^="more-options"] {
   padding: 5px;
+  font-size: 12px;
   font-weight: bold;
   width: 100%;
   text-align: center;
@@ -249,7 +261,8 @@
 }
 
 .more-options-tab span[class^="more-options"]:hover {
-  background-color: #cccccc;
+  background-color: #3B5998;
+  color: white;
 }
 
 html {
