@@ -508,17 +508,19 @@ div[class^="post-add"],
         &:hover .post-hover-box {
             display: inline-block;
             position: absolute;
-            left: -10%;
+            left: 15%;
             top: 133%;
             padding: 5px 0px;
             border: 1px solid #dddddd;
-            border-radius: 10px;
+            border-radius: 2px;
             z-index: 1;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-around;
-            background-color:#eeeeee;
+            background-color:white;
+            box-shadow: 3px 4px 11px 0px #888888;
+
             width: 100px;
             overflow: hidden;
 
@@ -539,7 +541,7 @@ div[class^="post-add"],
             z-index: 2;
         }
         .cool-arrow-post::after{
-            border-bottom: 8px solid #eeeeee;
+            border-bottom: 8px solid white;
             border-left: 8px solid transparent;
             border-right: 8px solid transparent;
             left: -8px;
@@ -549,13 +551,13 @@ div[class^="post-add"],
         }
         .post-hover-options{
             width: 100%;
-            margin-top:5px;
-            margin-bottom: 5px;
+            text-align: center;
             padding: 4px 5px;
             font-weight: bold;
 
             &:hover{
-                background-color:#cccccc;
+                background-color:$main-blue-color;
+                color: white;
                 cursor: pointer;
             }
         }
@@ -861,7 +863,7 @@ div[class^="stories-story"]:hover{
             z-index: 2;
         }
         .cool-arrow-post::after{
-            border-left: 6px solid #eeeeee;
+            border-left: 6px solid white;
             border-top: 6px solid transparent;
             border-bottom: 6px solid transparent;
             left: -8px;
@@ -871,14 +873,16 @@ div[class^="stories-story"]:hover{
         }
         .post-hover-options{
             width: 100%;
-            margin:1px 0px;
+            height: 100%;
             padding: 1px 5px;
             border-radius: 2px;
             font-weight: bold;
             text-align: center;
+            line-height: 2;
 
             &:hover{
-                background-color:#cccccc;
+                background-color:$main-blue-color;
+                color: white;
                 cursor: pointer;
             }
         }
@@ -1013,7 +1017,7 @@ div[class^="stories-story"]:hover{
         }
 
         .cool-arrow-post::after{
-            border-left: 6px solid #eeeeee;
+            border-left: 6px solid white;
             border-top: 6px solid transparent;
             border-bottom: 6px solid transparent;
             left: -8px;
@@ -1024,14 +1028,16 @@ div[class^="stories-story"]:hover{
 
         .post-hover-options{
             width: 100%;
-            margin:1px 0px;
+            height: 100%;
             padding: 1px 5px;
             border-radius: 2px;
             font-weight: bold;
             text-align: center;
+            line-height: 2;
 
             &:hover{
-                background-color:#cccccc;
+                background-color:$main-blue-color;
+                color: white;
                 cursor: pointer;
             }
         }
@@ -1073,16 +1079,17 @@ div[class^="stories-story"]:hover{
     position: absolute;
     padding: 0px 5px;
     border: 1px solid #dddddd;
-    border-radius: 10px;
+    border-radius: 2px;
     z-index: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    background-color: #eeeeee;
+    background-color: white;
     width: 160px;
     height: 25px;
     overflow: hidden;
+    box-shadow: 3px 4px 11px 0px #888888;
 }
 
 .hide{
