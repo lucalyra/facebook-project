@@ -16,7 +16,7 @@ if(window.localStorage.firstName == null || window.localStorage.lastName == null
     window.location.href = "login.html"
 } else { return }
 }
-let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), "pic/giraffe.jpg");
+let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), localStorage.getItem('profilePic'));
 
 function updateUserPage(){
     let profilePic = document.querySelectorAll("#profilePic");
@@ -62,10 +62,11 @@ class MoreOptions{
     }
 
     logout(){
-        console.log("aa");
         window.location.href = "login.html";
         window.localStorage.removeItem('firstName');
         window.localStorage.removeItem('lastName');
+        window.localStorage.removeItem('profilePic');
+
     }
 }
 new MoreOptions

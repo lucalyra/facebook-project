@@ -47,3 +47,22 @@ html{
     }
 
 }
+.login-pic-options{
+    margin: 10px 0;
+    input[type="radio"]{
+        visibility: hidden; 
+        position: absolute;
+
+        &:checked + .pic{
+            border: 2px #ffffff solid;
+            box-sizing: border-box;
+        }
+    }
+
+    .pic{
+        height: 71px;
+        border: 2px solid transparent;
+        border-radius: 40px;
+        box-sizing: border-box;
+    }
+}

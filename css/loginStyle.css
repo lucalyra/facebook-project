@@ -49,3 +49,24 @@ html {
 .login-button:hover {
   background-color: #354f82;
 }
+
+.login-pic-options {
+  margin: 10px 0;
+}
+
+.login-pic-options input[type="radio"] {
+  visibility: hidden;
+  position: absolute;
+}
+
+.login-pic-options input[type="radio"]:checked + .pic {
+  border: 2px #ffffff solid;
+  box-sizing: border-box;
+}
+
+.login-pic-options .pic {
+  height: 71px;
+  border: 2px solid transparent;
+  border-radius: 40px;
+  box-sizing: border-box;
+}
