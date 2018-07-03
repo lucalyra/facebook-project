@@ -1,8 +1,4 @@
 
-// let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), localStorage.getItem('profilePic'));
-
-// let username = new User('Lucas','Lyra', "pic/profile.jpg");
-
 function time(){
     let d = new Date();
     let day = d.getDay();
@@ -12,39 +8,6 @@ function time(){
     return  time;
 }
 
-class MoreOptions{
-    constructor(){
-        this.moreOptions = document.querySelector(".more-options");
-        this.moreButton = document.querySelector(".more-button")
-        this.moreBox = document.querySelector(".more-options-box");
-        this.logoutButton = document.querySelector(".more-options-logout");
-        this.openMore()
-        this.logoutActivate()
-    }
-
-    openMore(){
-        this.moreButton.addEventListener("click",() => { if( this.moreBox.classList.contains("hide") ) {
-            this.moreBox.classList.remove("hide")
-        } else { this.moreBox.classList.add("hide") }
-         } ) }
-    
-    logoutActivate(){
-        this.logoutButton.addEventListener("click", () => this.logout())
-    }
-
-    logout(){
-        window.location.href = "login.html";
-        window.localStorage.removeItem('username')
-        // window.localStorage.removeItem('firstName');
-        // window.localStorage.removeItem('lastName');
-        // window.localStorage.removeItem('profilePic');
-
-    }
-}
-new MoreOptions
-
-
-
 //new post
 class Posting{
     constructor(postQuery, user){
@@ -52,28 +15,40 @@ class Posting{
         this.user = user
         this.input = document.querySelector(".post-box-input");
         
+        this.enterKeypress();
+        this.openPostScroll();  
+    };
+
+    enterKeypress(){
         this.input.addEventListener("keypress", (event) => {
             if (event.keyCode == 10) {
-                if(this.input.value == (this.input.keyCode == 13)){
-                    alert("Looks like your post is empty, try writing something.");
-                } else {
-                    this.newPost();
-                    this.input.value = "";
-                    this.input.blur();
-                } } } );
-        window.addEventListener("scroll", () => {this.activateView()});
-        
+                this.checkEmptyPost();
+                } } );
+    };
+
+    checkEmptyPost(){
+        if(this.input.value == (this.input.keyCode == 13)){
+            alert("Looks like your post is empty, try writing something.");
+        } else {
+          this.sendPost(); 
+        } 
+    }; 
+
+    sendPost(){
+        this.newPost();
+        this.input.value = "";
+        this.input.blur();
     };
 
     newPost(){
         let postBody = new Actions(this.input.value,this.user);~
         this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
-    } 
-
+    };
 
     activateView(){
     if (this.view() == false){this.input.blur()};
-    }
+    };
+
     view(){ 
         let newPPost = document.querySelector('.new-post');
         let bounding = newPPost.getBoundingClientRect();
@@ -88,11 +63,13 @@ class Posting{
             return false;
         }
     }
-
+    openPostScroll(){
+        window.addEventListener("scroll", () => {this.activateView()});
+    }
 };
 
-
-class postPicture{
+//picture post
+class postPicture{ // ** Working on it **
     constructor(){
         this.newPostBox = document.querySelector(".new-post");
         this.postBox = document.querySelector(".post-box")
@@ -103,13 +80,9 @@ class postPicture{
     createPictureBox(){
         this.textInput = this.postBox.querySelector(".post-box-input");
         this.profilePic = this.postBox.querySelector(".post-profile");
-
-        // this.textInput.
-
         this.postPic = document.createElement('img');
         this.postPic.className = "post-image";
         this.postPic.src = "pic/giraffe.jpg";
-
         this.postBox.appendChild(this.postPic)
         this.boxStyle();
         
@@ -117,15 +90,11 @@ class postPicture{
 
     boxStyle(){
         this.profilePic.style.display = "none";
-
         this.postPic.style.width = "479px"
         this.postPic.style.marginTop = "10px"
         this.postPic.style.order = "0";
-
         this.textInput.style.width = "90%"
         this.textInput.style.order = "1";
-
-
         this.postBox.style.flexDirection = "column";
         console.log(this.newPostBox.style)
 
@@ -135,10 +104,8 @@ class postPicture{
         this.postPicture.addEventListener("click", () => this.createPictureBox())
     }
 }
-// new postPicture
 
-
-//random post
+//random post - not in use
 class Posts{
     constructor(postQuery, input, user){
         this.postQuery = postQuery;
@@ -270,7 +237,21 @@ class UserOptions{
 class Actions extends Body{
     constructor(text,user){
         super(text,user);
-        //like, comments, share
+
+        this.postActionBar();
+
+        //likes
+        this.likes = new Likes(this.el, this.postAction);
+        this.likes.likeButton(this.postAction);
+        this.likes.likesAmount(this.el);
+
+        //comments
+        this.comments = new Comments(this.el, this.postAction, username);
+
+    };
+
+    //like, comments, share
+    postActionBar(){
         this.postAction = document.createElement("div");
         this.postAction.classList.add("post-action");
         this.postAction.innerHTML =  
@@ -290,15 +271,7 @@ class Actions extends Body{
         `;
         this.el.appendChild(this.postAction);
 
-        //likes
-        this.likes = new Likes(this.el, this.postAction);
-        this.likes.likeButton(this.postAction);
-        this.likes.likesAmount(this.el);
-
-        //comments
-        this.comments = new Comments(this.el, this.postAction, username);
-
-    };
+    }
 }
 
 class Comments{
@@ -635,9 +608,11 @@ class UserService{
         return fetch('https://jsonplaceholder.typicode.com/users/' + id)
             .then(res => res.json())
             .then(info => new CatchUser(info))
-            .then(user => localStorage.setItem("user", JSON.stringify(user)))
+            .then(user => this.storageStringify(user))
             .catch(() => JSON.parse(localStorage.getItem("user")))
-
+    }
+    storageStringify(user){
+        localStorage.setItem("user", JSON.stringify(user))
     }
 }
 
@@ -646,8 +621,11 @@ class PostService{
         return fetch('https://jsonplaceholder.typicode.com/posts/?userId=' + userId)
             .then(res => res.json())
             .then(posts => posts[0].body)
-            .then(post => localStorage.setItem("post", JSON.stringify(post)))
+            .then(post => this.storageStringify(post))
             .catch(() => JSON.parse(localStorage.getItem("post")))
+    }
+    storageStringify(post){
+        localStorage.setItem("post", JSON.stringify(post))
     }
 }
 class CatchUser{
