@@ -1,5 +1,6 @@
-window.localStorage.removeItem('firstName');
-window.localStorage.removeItem('lastName');
+// window.localStorage.removeItem('firstName');
+// window.localStorage.removeItem('lastName');
+window.localStorage.removeItem('username')
 
 class Login{
     constructor(){
@@ -12,10 +13,17 @@ class Login{
         this.button.addEventListener("click", () =>{
             this.firstName = document.querySelector("#firstName");
             this.lastName = document.querySelector("#lastName");
-            window.localStorage.setItem('firstName', this.firstName.value);
-            window.localStorage.setItem('lastName', this.lastName.value);
+            // window.localStorage.setItem('firstName', this.firstName.value);
+            // window.localStorage.setItem('lastName', this.lastName.value);
+            this.newUser();
             this.login();
         })
+    }
+    newUser(){
+        this.user = new User(this.firstName.value, this.lastName.value, this.profilePic);
+        this.user.fullname;
+        window.localStorage.setItem('username', JSON.stringify(this.user));
+
     }
 
     login(){
@@ -24,14 +32,16 @@ class Login{
 
     loginPic(){
         this.pictureOpt = document.querySelectorAll("#loginPic");
-        window.localStorage.setItem('profilePic', this.pictureOpt[0].value)
+        this.profilePic = this.pictureOpt[0].value
         this.pictureOpt.forEach( (pic) => { pic.addEventListener('click',() => this.picListener(pic.value)) } )
 
     }
 
     picListener(pic){
-        window.localStorage.setItem('profilePic', pic)
+        // window.localStorage.setItem('profilePic', pic)
+        this.profilePic = pic
     }
 }
 
-let aaa = new Login
+
+let aa = new Login

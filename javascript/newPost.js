@@ -1,19 +1,6 @@
-//new user
-class User{
-    constructor(name, lastname, pic){
-        this.name = name;
-        this.lastname = lastname;
-        this.profilePic = pic;
-    }
-    get fullname(){
-        return `${this.name} ${this.lastname}`;
-    }
 
-}
+// let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), localStorage.getItem('profilePic'));
 
-let username = new User(localStorage.getItem('firstName'), localStorage.getItem('lastName'), localStorage.getItem('profilePic'));
-
-;
 // let username = new User('Lucas','Lyra', "pic/profile.jpg");
 
 function time(){
@@ -47,9 +34,10 @@ class MoreOptions{
 
     logout(){
         window.location.href = "login.html";
-        window.localStorage.removeItem('firstName');
-        window.localStorage.removeItem('lastName');
-        window.localStorage.removeItem('profilePic');
+        window.localStorage.removeItem('username')
+        // window.localStorage.removeItem('firstName');
+        // window.localStorage.removeItem('lastName');
+        // window.localStorage.removeItem('profilePic');
 
     }
 }
@@ -101,7 +89,53 @@ class Posting{
         }
     }
 
-}1;
+};
+
+
+class postPicture{
+    constructor(){
+        this.newPostBox = document.querySelector(".new-post");
+        this.postBox = document.querySelector(".post-box")
+        this.openPictureBox();
+        
+    }
+
+    createPictureBox(){
+        this.textInput = this.postBox.querySelector(".post-box-input");
+        this.profilePic = this.postBox.querySelector(".post-profile");
+
+        // this.textInput.
+
+        this.postPic = document.createElement('img');
+        this.postPic.className = "post-image";
+        this.postPic.src = "pic/giraffe.jpg";
+
+        this.postBox.appendChild(this.postPic)
+        this.boxStyle();
+        
+    }
+
+    boxStyle(){
+        this.profilePic.style.display = "none";
+
+        this.postPic.style.width = "479px"
+        this.postPic.style.marginTop = "10px"
+        this.postPic.style.order = "0";
+
+        this.textInput.style.width = "90%"
+        this.textInput.style.order = "1";
+
+
+        this.postBox.style.flexDirection = "column";
+        console.log(this.newPostBox.style)
+
+    }
+    openPictureBox(){
+        this.postPicture = document.querySelector(".post-album");
+        this.postPicture.addEventListener("click", () => this.createPictureBox())
+    }
+}
+// new postPicture
 
 
 //random post
