@@ -23,7 +23,7 @@ function randomChoose(){
         console.log(random)
         new Posts(document.querySelector(".posted"),randomLorem(loremArr),Guy0).newPost();
         times--
-    };
+    }
 };
 
 function randomLorem(lorem){
