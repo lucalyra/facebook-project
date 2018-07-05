@@ -1,4 +1,4 @@
-
+//real time
 function time(){
     let d = new Date();
     let day = d.getDay();
@@ -67,6 +67,8 @@ class Posting{
         window.addEventListener("scroll", () => {this.activateView()});
     }
 };
+new Posting(document.querySelector(".posted"), username);
+
 
 //picture post
 class postPicture{ // ** Working on it **
@@ -103,7 +105,7 @@ class postPicture{ // ** Working on it **
         this.postPicture = document.querySelector(".post-album");
         this.postPicture.addEventListener("click", () => this.createPictureBox())
     }
-}
+};
 
 //random post - not in use
 class Posts{
@@ -126,6 +128,7 @@ class Posts{
     }
 };
 
+//post body
 class Body{
     constructor(text, user){
         this.el = document.createElement("div");
@@ -155,6 +158,8 @@ class Body{
     };
 
 };
+
+//post user options
 class UserOptions{
     constructor(el,text){
         this.userOptions = document.createElement("div");
@@ -233,7 +238,9 @@ class UserOptions{
     }
   
 
-}
+};
+
+//post actions
 class Actions extends Body{
     constructor(text,user){
         super(text,user);
@@ -274,6 +281,7 @@ class Actions extends Body{
     }
 }
 
+//post comments
 class Comments{
     constructor(el, postAction, user){
         this.commenting = document.createElement("div"); //create comments box
@@ -349,6 +357,7 @@ class Comments{
 
 }
 
+// comments actions
 class CommentsActions{
     constructor(userComment,commentBox){
     this.commentsActions = document.createElement("div");
@@ -393,6 +402,8 @@ class CommentsActions{
         this.commentsActions.appendChild(this.commentTime);
     }
 }
+
+//likes
 class Likes{
     constructor(){
         this.postLikes = document.createElement("div");
@@ -434,6 +445,7 @@ class Likes{
     };
 }
 
+//reply comments
 class Reply{
     constructor(commentBox,commentReply,commentsActions){
         this.commentReply = commentReply;
@@ -562,7 +574,7 @@ class Reply{
 }
 
 
-
+//fetch user and posts from /server/server.js
 fetch('http://127.0.0.1:3000')
   .then((response) => {
     response.json()
@@ -575,6 +587,7 @@ fetch('http://127.0.0.1:3000')
   });
 
 
+//create post from server
 class serverPost {
     
     constructor(text, user, likes, time){
@@ -600,9 +613,6 @@ class serverPost {
     }
     
 }
-
-new Posting(document.querySelector(".posted"), username);
-
 class UserService{
     getUser(id){
         return fetch('https://jsonplaceholder.typicode.com/users/' + id)

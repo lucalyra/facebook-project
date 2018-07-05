@@ -1,9 +1,11 @@
+/* line 1, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 html {
   background-color: #3b5a96;
   height: 100%;
   font-family: 'Roboto', sans-serif;
 }
 
+/* line 6, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-container {
   display: flex;
   flex-direction: column;
@@ -13,6 +15,7 @@ html {
   top: 35%;
 }
 
+/* line 15, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .facebook-logo {
   position: absolute;
   top: -130px;
@@ -20,6 +23,7 @@ html {
   margin: 10px 0;
 }
 
+/* line 21, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-box {
   display: flex;
   position: relative;
@@ -27,6 +31,7 @@ html {
   flex-direction: column;
 }
 
+/* line 26, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-box .login-info {
   height: 23px;
   padding: 3px 5px;
@@ -35,6 +40,7 @@ html {
   margin: 5px 0;
 }
 
+/* line 35, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-button {
   background-color: #486db3;
   padding: 8px;
@@ -46,27 +52,34 @@ html {
   cursor: pointer;
 }
 
+/* line 45, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-button:hover {
   background-color: #354f82;
 }
 
+/* line 50, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-pic-options {
   margin: 10px 0;
 }
 
+/* line 52, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-pic-options input[type="radio"] {
   visibility: hidden;
   position: absolute;
 }
 
+/* line 56, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-pic-options input[type="radio"]:checked + .pic {
   border: 2px #ffffff solid;
   box-sizing: border-box;
 }
 
+/* line 62, C:/Users/ASUS ROG/FED/Facebook project/scss/loginStyle.scss */
 .login-pic-options .pic {
   height: 71px;
   border: 2px solid transparent;
   border-radius: 40px;
   box-sizing: border-box;
 }
+
+/*# sourceMappingURL=../css/loginStyle.map */
