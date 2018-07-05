@@ -319,7 +319,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: white;
+  background-color: #e5e5e5;
   box-shadow: 3px 4px 11px 0px #888888;
   width: 600px;
   height: 400px;
@@ -343,66 +343,68 @@
   margin-left: 10px;
   padding-left: 10px;
   border-radius: 3px 3px 0 0;
-  background-color: white;
+  background-color: #e5e5e5;
+  font-weight: bold;
   border-width: 0 0 1px 0;
   border-style: solid;
 }
 
-/* line 47, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 48, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .input-box input:focus {
   transition: all 0.5s linear;
-  background-color: rgba(172, 172, 172, 0.321569);
+  background-color: #d9d8d8;
 }
 
-/* line 54, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 55, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .input-box span {
   margin-left: 10px;
 }
 
-/* line 57, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 58, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .input-box .lastname-span {
   grid-area: lastname;
 }
 
-/* line 60, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 61, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .input-box .name-span {
   grid-area: name;
 }
 
-/* line 63, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 64, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .input-box .name-input {
   grid-area: inputname;
 }
 
-/* line 66, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 67, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .input-box .lastname-input {
   grid-area: inputlastname;
 }
 
-/* line 69, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 70, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .input-box .input-span {
   grid-area: title;
   font-weight: bold;
 }
 
-/* line 75, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 76, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 input[type="radio"] {
   visibility: hidden;
   position: absolute;
 }
 
-/* line 79, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 80, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 input[type="radio"]:checked + .pic {
-  border: 2px #ffffff solid;
+  border: 2px black solid;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
-/* line 84, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 86, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 label {
   margin-left: 23px;
 }
 
-/* line 87, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 89, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .pic {
   height: 71px;
   border: 2px solid transparent;
@@ -410,7 +412,7 @@ label {
   box-sizing: border-box;
 }
 
-/* line 93, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 95, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .picture-span {
   display: block;
   margin-bottom: 10px;
@@ -418,11 +420,11 @@ label {
   font-weight: bold;
 }
 
-/* line 100, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 102, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .close-button {
   align-self: flex-end;
   margin: 5px 10px;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: gray;
   padding: 5px 10px;
   cursor: pointer;
@@ -430,13 +432,13 @@ label {
   font-weight: bold;
 }
 
-/* line 110, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 112, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .close-button:hover {
   color: gray;
   background-color: rgba(128, 128, 128, 0.509804);
 }
 
-/* line 117, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 119, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .submit-box {
   align-self: flex-end;
   display: flex;
@@ -447,7 +449,7 @@ label {
   margin: 20px 0;
 }
 
-/* line 127, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 129, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .submit-box div[class*="-button"] {
   cursor: pointer;
   padding: 6px 20px;
@@ -458,9 +460,9 @@ label {
   margin-left: 10px;
 }
 
-/* line 136, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 138, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .submit-box div[class*="-button"]:hover {
-  background-color: #2d4370;
+  background-color: #2d4373;
 }
 
 /* line 4, C:/Users/ASUS ROG/FED/Facebook project/scss/newStyle.scss */

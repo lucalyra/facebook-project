@@ -70,7 +70,7 @@ class Settings{
        this.picOptions.innerHTML = 
        `
        <label>
-           <input type="radio" name="profile-pic" id="loginPic" value="pic/giraffe.jpg" checked/>
+           <input type="radio" name="profile-pic" id="loginPic" value="pic/giraffe.jpg"/>
            <img src="pic/giraffe.jpg" class="pic">
        </label>
        <label>
@@ -128,6 +128,23 @@ class SettingsSubmit{
         this.submitListener();
     }
     submitListener(){
+        this.submitButton.addEventListener('click', () => this.submit())
+    }
+    submit(){
+        console.log(username.name)
+        this.name = this.settingBox.querySelector(".name-input")
+        this.lastname = this.settingBox.querySelector(".lastname-input")
+        if(this.name.value !== ""){
+            username.name = this.name.value;
+        };
+        if(this.lastname.value !== ""){
+            username.lastname = this.lastname.value;
+        }
+        username.fullname = username.name + " " + username.lastname;
+        alert(`You have changed your name to ${username.fullname}.`)
+        this.close.close();
+        updateUserPage()
+
 
     }
     cancelButton(){

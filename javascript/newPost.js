@@ -10,15 +10,13 @@ function time(){
 
 //new post
 class Posting{
-    constructor(postQuery, user){
+    constructor(postQuery){
         this.postQuery = postQuery;
-        this.user = user
         this.input = document.querySelector(".post-box-input");
         
         this.enterKeypress();
         this.openPostScroll();  
     };
-
     enterKeypress(){
         this.input.addEventListener("keypress", (event) => {
             if (event.keyCode == 10) {
@@ -41,7 +39,7 @@ class Posting{
     };
 
     newPost(){
-        let postBody = new Actions(this.input.value,this.user);~
+        let postBody = new Actions(this.input.value,username);~
         this.postQuery.insertBefore(postBody.el, this.postQuery.childNodes[0]);
     };
 
@@ -67,7 +65,7 @@ class Posting{
         window.addEventListener("scroll", () => {this.activateView()});
     }
 };
-new Posting(document.querySelector(".posted"), username);
+let postClass = new Posting(document.querySelector(".posted"));
 
 
 //picture post
