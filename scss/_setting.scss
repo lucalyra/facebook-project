@@ -35,6 +35,7 @@
     margin-bottom: 30px;
     height: 75px;
     width: 100%;
+    margin-top: 40px;
 
     input{
         margin-left: 10px;
@@ -112,8 +113,8 @@ label{
     font-weight: bold;
 
     &:hover{
-        color: gray;
-        background-color: rgba(128, 128, 128, 0.5098039215686274);
+        color: white;
+        background-color: rgba(255, 0, 0, 0.58)
 
     }
 }
@@ -126,6 +127,7 @@ label{
     justify-content: center;
     width: 100%;
     margin:20px 0;
+    margin-top:auto;
 
 
     div[class*="-button"]{
@@ -137,8 +139,14 @@ label{
         border-radius: 4px;
         margin-left: 10px;
         
-        &:hover{
-            background-color: darken($main-blue-color,10%);
-        }
+        // &:hover{
+        //     background-color: darken($main-blue-color,10%);
+        // }
+    }
+    .cancel-button:hover{
+        background-color: rgba(255, 0, 0, 0.58);
+    }
+    .submit-button:hover{
+        background-color: darken($main-blue-color,10%);
     }
 }

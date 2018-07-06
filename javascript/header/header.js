@@ -36,7 +36,7 @@ class MoreOptions{
     }
 }
 let moreOptions = new MoreOptions 
-
+let chosenPic = "";
 class Settings{
     constructor(){
         this.createSettingsBox();
@@ -56,54 +56,69 @@ class Settings{
         </div>
         <span class="picture-span">Choose a new picture</span> 
         `
-        this.changePic();
+        this.pictureOptions();
         this.settingBackground.appendChild(this.settingBox);
-        this.close = new SettingsClose(this.settingBox);
-        this.submit = new SettingsSubmit(this.settingBox,this.close);
 
         document.body.insertBefore(this.settingBackground, document.body.childNodes[0]);
+        this.name = this.settingBox.querySelector(".name-input")
+        this.lastname = this.settingBox.querySelector(".lastname-input")
+        this.close = new SettingsClose(this.settingBox);
+        this.submit = new SettingsSubmit(this.settingBox,this.close);
+        this.changePicture();
+
    }
 
-   changePic(){
+   pictureOptions(){
        this.picOptions = document.createElement("div");
        this.picOptions.className = "picture-options";
        this.picOptions.innerHTML = 
        `
        <label>
-           <input type="radio" name="profile-pic" id="loginPic" value="pic/giraffe.jpg"/>
+           <input type="radio" name="profile-pic" id="pictureOption" value="pic/giraffe.jpg"/>
            <img src="pic/giraffe.jpg" class="pic">
        </label>
        <label>
-           <input type="radio" name="profile-pic" id="loginPic" value="pic/cow.jpg"/>
+           <input type="radio" name="profile-pic" id="pictureOption" value="pic/cow.jpg"/>
            <img src="pic/cow.jpg" class="pic">
        </label>
        <label>
-           <input type="radio" name="profile-pic" id="loginPic" value="pic/fox.jpg"/>
+           <input type="radio" name="profile-pic" id="pictureOption" value="pic/fox.jpg"/>
            <img src="pic/fox.jpg" class="pic">
        </label>
        <label>
-           <input type="radio" name="profile-pic" id="loginPic" value="pic/panda.jpeg"/>
+           <input type="radio" name="profile-pic" id="pictureOption" value="pic/panda.jpeg"/>
            <img src="pic/panda.jpeg" class="pic">
        </label>
        <label> 
-           <input type="radio" name="profile-pic" id="loginPic" value="pic/parrot.jpg"/>
+           <input type="radio" name="profile-pic" id="pictureOption" value="pic/parrot.jpg"/>
            <img src="pic/parrot.jpg" class="pic">
        </label>
        <label>
-           <input type="radio" name="profile-pic" id="loginPic" value="pic/puppy.jpg"/>
+           <input type="radio" name="profile-pic" id="pictureOption" value="pic/puppy.jpg"/>
            <img src="pic/puppy.jpg" class="pic">
        </label>
        `
        this.settingBox.appendChild(this.picOptions);
-   }
+       }
+
+    changePicture(){
+        this.pictureOption = document.querySelectorAll("#pictureOption");
+        this.pictureOption.forEach( (pic) => {pic.addEventListener('click', () => {this.chosenPicture(pic)} )})
+    }
+
+    chosenPicture(pic){
+        chosenPic = pic;
+
+    }
 
 }
 
 class SettingsSubmit{
-    constructor(settingBox,close){
+    constructor(settingBox,close,chosenPic){
         this.settingBox = settingBox;
         this.close = close;
         this.settingBackground = this.settingBox.parentNode;
+        this.chosenPic = chosenPic;
         this.submitBox();
     }
     submitBox(){
@@ -129,7 +144,7 @@ class SettingsSubmit{
     }
     submitListener(){
         this.submitButton.addEventListener('click', () => this.submitConfirm())
-    }
+    } 
     submit(){
         if(this.name.value !== ""){
             username.name = this.name.value;
@@ -137,21 +152,27 @@ class SettingsSubmit{
         if(this.lastname.value !== ""){
             username.lastname = this.lastname.value;
         }
+        if(this.chosenPic !== ""){
+            username.profilePic = chosenPic.value;
+        }
         username.fullname = username.name + " " + username.lastname;
         window.localStorage.setItem('username', JSON.stringify(username));
         this.close.close();
         updateUserPage()
-
-
     }
-
+    isEmpty(){
+        return ((this.name.value == "") && (this.lastname.value == "") && (chosenPic.value == ""))  == true
+        }
+  
     submitConfirm(){
         this.name = this.settingBox.querySelector(".name-input")
         this.lastname = this.settingBox.querySelector(".lastname-input")
-        this.confirm = confirm(`You're changing your name to ${this.name.value} ${this.lastname.value}, are you sure?`)
-        if( this.confirm == true){
-            this.submit()
-        }
+        if(this.isEmpty() == false){
+            this.confirm = confirm(`You're changing your name to ${this.name.value} ${this.lastname.value}, are you sure?`)
+            if( this.confirm == true){
+                this.submit()
+            }
+        } else { alert("The input is empty.")}
     }
     cancelButton(){
         this.cancelButton =document.createElement("div");
@@ -164,7 +185,7 @@ class SettingsSubmit{
         this.cancelListener();
     }
     cancelListener(){
-        this.cancelButton.addEventListener("click", () => this.close.close());
+        this.cancelButton.addEventListener("click", () => this.close.closeConfirm());
     }
 }
 class SettingsClose{
@@ -173,6 +194,11 @@ class SettingsClose{
         this.settingBackground = this.settingBox.parentNode;
         this.closeButton()
         this.clickOutBox()
+    }
+    closeConfirm(){
+        this.confirm = confirm("Are you sure you want to leave settings without saving?");
+        if(this.confirm == true){this.close()}
+    
     }
 
     closeButton(){
@@ -187,10 +213,11 @@ class SettingsClose{
         this.buttonListener();
     }
     buttonListener(){
-        this.closeButton.addEventListener("click", () => this.close())
+        this.closeButton.addEventListener("click", () => this.closeConfirm())
     }
     clickOutBox(){
-        this.settingBackground.addEventListener("click", (event) =>{if(event.target == this.settingBackground){this.close()}})
+        this.settingBackground.addEventListener("click", (event) =>{if(event.target == this.settingBackground){this.closeConfirm()}})
+    
     }
 
     close(){
