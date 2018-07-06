@@ -128,12 +128,9 @@ class SettingsSubmit{
         this.submitListener();
     }
     submitListener(){
-        this.submitButton.addEventListener('click', () => this.submit())
+        this.submitButton.addEventListener('click', () => this.submitConfirm())
     }
     submit(){
-        console.log(username.name)
-        this.name = this.settingBox.querySelector(".name-input")
-        this.lastname = this.settingBox.querySelector(".lastname-input")
         if(this.name.value !== ""){
             username.name = this.name.value;
         };
@@ -141,11 +138,20 @@ class SettingsSubmit{
             username.lastname = this.lastname.value;
         }
         username.fullname = username.name + " " + username.lastname;
-        alert(`You have changed your name to ${username.fullname}.`)
+        window.localStorage.setItem('username', JSON.stringify(username));
         this.close.close();
         updateUserPage()
 
 
+    }
+
+    submitConfirm(){
+        this.name = this.settingBox.querySelector(".name-input")
+        this.lastname = this.settingBox.querySelector(".lastname-input")
+        this.confirm = confirm(`You're changing your name to ${this.name.value} ${this.lastname.value}, are you sure?`)
+        if( this.confirm == true){
+            this.submit()
+        }
     }
     cancelButton(){
         this.cancelButton =document.createElement("div");

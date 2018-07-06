@@ -77,10 +77,10 @@ input[type="radio"]{
     visibility: hidden; 
     position: absolute;
 
+
     &:checked + .pic{
         border: 2px black solid;
         box-sizing: border-box;
-        cursor: pointer;
     }
 }
 label{
@@ -91,6 +91,8 @@ label{
     border: 2px solid transparent;
     border-radius: 40px;
     box-sizing: border-box;
+    cursor: pointer;
+
 }
 .picture-span{
     display: block;

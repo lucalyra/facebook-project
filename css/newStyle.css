@@ -392,11 +392,10 @@ input[type="radio"] {
   position: absolute;
 }
 
-/* line 80, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 81, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 input[type="radio"]:checked + .pic {
   border: 2px black solid;
   box-sizing: border-box;
-  cursor: pointer;
 }
 
 /* line 86, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
@@ -410,9 +409,10 @@ label {
   border: 2px solid transparent;
   border-radius: 40px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
-/* line 95, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 97, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .picture-span {
   display: block;
   margin-bottom: 10px;
@@ -420,7 +420,7 @@ label {
   font-weight: bold;
 }
 
-/* line 102, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 104, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .close-button {
   align-self: flex-end;
   margin: 5px 10px;
@@ -432,13 +432,13 @@ label {
   font-weight: bold;
 }
 
-/* line 112, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 114, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .close-button:hover {
   color: gray;
   background-color: rgba(128, 128, 128, 0.509804);
 }
 
-/* line 119, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 121, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .submit-box {
   align-self: flex-end;
   display: flex;
@@ -449,7 +449,7 @@ label {
   margin: 20px 0;
 }
 
-/* line 129, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 131, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .submit-box div[class*="-button"] {
   cursor: pointer;
   padding: 6px 20px;
@@ -460,7 +460,7 @@ label {
   margin-left: 10px;
 }
 
-/* line 138, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
+/* line 140, C:/Users/ASUS ROG/FED/Facebook project/scss/_setting.scss */
 .submit-box div[class*="-button"]:hover {
   background-color: #2d4373;
 }
