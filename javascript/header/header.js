@@ -73,27 +73,27 @@ class Settings{
        this.picOptions.className = "picture-options";
        this.picOptions.innerHTML = 
        `
-       <label>
+       <label class="setting-pic-label">
            <input type="radio" name="profile-pic" id="pictureOption" value="pic/giraffe.jpg"/>
            <img src="pic/giraffe.jpg" class="pic">
        </label>
-       <label>
+       <label class="setting-pic-label">
            <input type="radio" name="profile-pic" id="pictureOption" value="pic/cow.jpg"/>
            <img src="pic/cow.jpg" class="pic">
        </label>
-       <label>
+       <label class="setting-pic-label">
            <input type="radio" name="profile-pic" id="pictureOption" value="pic/fox.jpg"/>
            <img src="pic/fox.jpg" class="pic">
        </label>
-       <label>
+       <label class="setting-pic-label">
            <input type="radio" name="profile-pic" id="pictureOption" value="pic/panda.jpeg"/>
            <img src="pic/panda.jpeg" class="pic">
        </label>
-       <label> 
+       <label class="setting-pic-label"> 
            <input type="radio" name="profile-pic" id="pictureOption" value="pic/parrot.jpg"/>
            <img src="pic/parrot.jpg" class="pic">
        </label>
-       <label>
+       <label class="setting-pic-label">
            <input type="radio" name="profile-pic" id="pictureOption" value="pic/puppy.jpg"/>
            <img src="pic/puppy.jpg" class="pic">
        </label>
