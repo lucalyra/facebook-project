@@ -34,19 +34,6 @@ body{
     justify-content: center;
     grid-column-gap:10px;
 }
-.sidebar{
-    grid-area: sidebar;
-    width: 180px;
-    .no-scroll{
-        position: fixed;
-        width: 180px;
-    }
-    .scroll{
-        position: relative;
-        width: 180px;
-    }
-}
-
 .posts{
     grid-area: posts;
     width: 500px;
@@ -71,10 +58,7 @@ body{
     .posted{
         margin-bottom: 8px;
     }
-
-    
 }
-
 .events{
     grid-area: events;
     width:308px;
@@ -89,156 +73,8 @@ body{
         position: relative;
     }
 }
-.user-sidebar{
-    margin-top:13px;
-    margin-bottom: 14px;
-    padding: 4px 4px 4px 5px;
-}
-.social-sidebar .fa-ellipsis-h{
-    margin-left: auto;
-    margin-right: 5px;
-    font-size: 12px;
-}
 
-.sidebar-titles{
-    font-weight:bold;
-    color:$color-gray;
-    margin-bottom: 5px;
-    
-}
-.shortcuts-sidebar,
-.explore-sidebar{
-    margin-top: 20px;
-    display: flex;
-    width: 180px;
-    flex-direction: column;
-}
-.create-sidebar{
-    margin-top: 20px;
-    width: 180px;
-    cursor: default;
-}
-.create{
-    color:#344e86;
-    cursor: pointer;
-}
-.create:hover{
-    text-decoration: underline; 
-}
-.divider{
-    color: $color-gray;
-    font-size:10px;
-    cursor: default;
-}
-.group .fas{
-    color:$group-color;
-}
-.group-name,
-.see-more-text{
-    font-size: 13px
-}
-.see-more-text{
-    color:#344e86;
-}
-.user-sidebar,
-.newsfeed,
-.messanger,
-.marketplace{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.user-sidebar .name,
-.user-sidebar .last-name{
-    font-size: 13px;
-    padding: 2px;
-}
-
-.sidebar-profile,
-.newsfeed .fa-newspaper,
-.messanger .fab,
-.marketplace .fa-shopping-bag,
-.shortcuts-sidebar .fas,
-.explore-sidebar .fas,
-.explore-sidebar .far
-{
-    font-size:  17px;
-    margin-right: 4px;
-}
-.sidebar-profile{
-    height: 22px;
-    border-radius: 12px;
-}
-.social{
-    font-size:13px;
-}
-.sidebar,
-.social-sidebar{
-    flex-direction:column;
-    justify-content: center;
-    align-items: flex-start;
-}
-.social-grid{
-    display: grid;
-    grid-template-columns: 25px 131px 20px;
-    grid-template-rows: auto;
-    grid-template-areas: 
-    "icon title dot";
-    justify-content: center;
-    align-content: center;
-    padding: 4px;
-    padding-left:10px;
-    
-    &:hover{
-        background-color:#F6F7F9;
-        border: 1px solid rgba(195, 196, 197, 0.6196078431372549);
-        border-radius: 4px;
-        cursor: pointer;
-        padding: 3px;
-        padding-left:9px;
-    }
-    .fa-newspaper,
-    .fa-user-secret,
-    .fa-user-ninja{
-        grid-area: icon;
-    }
-}
-
-.social,
-.group .group-name{
-    grid-area: title;
-}
-.social-grid .fa-ellipsis-h {
-    grid-area: dot;
-    display:none;
-    color: $color-gray;
-}
-.social-grid:hover .fa-ellipsis-h{
-    display: inline-block;
-}
-
-.newsfeed .fa-newspaper{
-    color: #52a5a7;
-}
-.messanger .fa-facebook-messenger{
-    color: #6d84b4;
-}
-.marketplace .fa-shopping-bag{
-    color: darkorange;
-}
-.sidebar-events .fa-calendar-alt{
-    color:hotpink;
-}
-.sidebar-pages .fa-flag{
-    color:orangered;
-}
-.sidebar-groups .fa-user-ninja{
-    color: #794ACF;
-}
-.sidebar-friends .fa-user-friends{
-    color: $main-blue-color;
-}
-
+// post
 .new-post{
     display:flex;
     flex-direction: column;
@@ -302,8 +138,6 @@ body{
     border: 0px solid black;
     border-radius: 10px; 
 }
-
-
 .post-options{
     display: flex;
     align-content: center;
@@ -328,7 +162,6 @@ body{
     font-weight: bold;
     color:$main-blue-color;
 }
-
 .post-options .divider{
     font-size: 20px;
 }
@@ -343,9 +176,6 @@ body{
     border: none;
     overflow: hidden;
 }
-
-
-
 .post-box{
     border-bottom: 1px solid rgb(221, 223, 226);
     border-radius: 20px;
@@ -441,7 +271,6 @@ div[class^="post-add"],
     }
     
 }
-
 .user-posting{
     display: grid;
     grid-template-columns: 60px auto;
@@ -564,7 +393,6 @@ div[class^="post-add"],
     }
 
 }
-
 .post-content{
     margin-left: 10px;
     margin-top: 5px;
@@ -583,7 +411,6 @@ div[class^="post-add"],
     border: 3px solid $color-gray;
 
 }
-
 .post-action{
     display: flex;
     flex-direction: row;
@@ -616,10 +443,7 @@ div[class^="post-add"],
         background-color: #f2f3f5;
     }
 }
-
-
-
-
+//events
 .stories{
     display: flex;
     flex-direction: column;
@@ -655,7 +479,6 @@ div[class^="stories-story"]{
     "picture username"
     "picture add";
 }
-
 .stories-story-main .fa-plus-circle::before{
     background-color: #afbdd4    ;
     border-radius: 100px;
@@ -688,14 +511,12 @@ div[class^="stories-story"] .stories-additional{
     font-weight: bold;
     font-size:11px;
 }
-
 div[class^="stories-story"]:hover{
     background-color: #f2f3f5;
     cursor: pointer;
     border: 0px solid black;
     
 }
-
 .see-more{
     cursor: pointer;
     
@@ -708,6 +529,7 @@ div[class^="stories-story"]:hover{
     }
 }
 
+// post
 .post-commenting{
     display: flex;
     flex-direction: column;
@@ -890,7 +712,6 @@ div[class^="stories-story"]:hover{
     }
 
 }
-
 .reply-input-box{
     display: flex;
     align-items: center;
@@ -1042,7 +863,6 @@ div[class^="stories-story"]:hover{
         }
     }
 }
-
 .comments-actions{
     grid-area: actions;
     display: flex;
@@ -1072,24 +892,6 @@ div[class^="stories-story"]:hover{
         color: $color-gray;
     }
 };
-
-
-%hover-box{
-    position: absolute;
-    padding: 0px 5px;
-    border: 1px solid #dddddd;
-    border-radius: 2px;
-    z-index: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    background-color: white;
-    width: 160px;
-    height: 25px;
-    overflow: hidden;
-    box-shadow: 3px 4px 11px 0px #888888;
-}
 
 .hide{
  display: none !important
