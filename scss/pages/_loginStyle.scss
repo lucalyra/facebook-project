@@ -1,5 +1,11 @@
 html{
+    // background-color:#3b5a96;
+    // height: 100%;
+    // font-family: 'Roboto', sans-serif;
+}
+.container{
     background-color:#3b5a96;
+    width: 100%;
     height: 100%;
     font-family: 'Roboto', sans-serif;
 }
@@ -8,7 +14,7 @@ html{
     flex-direction: column;
     align-items: center;
     position: absolute;
-    left: 35%;
+    width: 100%;
     top: 35%;
 
 }
@@ -21,7 +27,7 @@ html{
 .login-box{
     display: flex;
     position: relative;
-    width: 450px;
+    width: 600px;
     flex-direction: column;
     .login-info{
         height: 23px;
