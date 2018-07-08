@@ -1,0 +1,84 @@
+.stories{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid $border-color;
+    border-radius:4px;
+    
+    .see-more{
+        margin: 0px 8px 8px;
+    }
+    
+}
+.stories-header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.stories-title,
+.stories-header .fa-ellipsis-h{
+    padding:8px;
+    color: $color-gray;
+    font-weight: bold;
+}
+div[class^="stories-story"]{
+    margin: 0px 0 2px 0;
+    padding: 4px;
+    display: grid;
+    grid-template-columns: 55px auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "picture username"
+    "picture add";
+}
+.stories-story-main .fa-plus-circle::before{
+    background-color: #afbdd4    ;
+    border-radius: 100px;
+}
+.stories-story-1 .fa-user-circle{
+    color: #246188;
+}
+.stories-story-2 .fa-user-circle{
+    color: purple;
+}
+div[class^="stories-story"] i[class*="fa-"]{
+    grid-area: picture;
+    font-size:45px;
+}
+div[class^="stories-story"] .post-profile{
+    grid-area: picture;
+    height: 45px;
+    border: 1px solid rgb(201, 198, 198);
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+div[class^="stories-story"] .stories-username{
+    grid-area: username;
+    color: #344e86;
+    font-weight: bold;
+}
+div[class^="stories-story"] .stories-additional{
+    grid-area:add;
+    color:$color-gray;
+    font-weight: bold;
+    font-size:11px;
+}
+div[class^="stories-story"]:hover{
+    background-color: #f2f3f5;
+    cursor: pointer;
+    border: 0px solid black;
+    
+}
+.see-more{
+    cursor: pointer;
+    
+    .fas{
+        color:$color-gray;
+    };
+    
+    &:hover .see-more-text{
+        text-decoration: underline;
+    }
+}
