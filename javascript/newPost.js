@@ -132,16 +132,26 @@ class Body{
         this.el = document.createElement("div");
         this.el.classList.add("post");
 
-        this.userPosting = document.createElement("div");
-        this.userPosting.classList.add("user-posting");
-        this.userPosting.innerHTML = 
-            `<img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
-            <div class="user-posting-name-time">
-                <span class="username-posting"> ${user.fullname}</span>
-                <span class="time-posting">${time()}</span>
-                <i class="fas fa-globe"></i>
-            </div>`;
-        this.el.appendChild(this.userPosting);
+        
+        
+        this.userPosting = $('<div></div>').addClass("user-posting")
+            .append($(`<img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
+                <div class="user-posting-name-time">
+                    <span class="username-posting"> ${user.fullname}</span>
+                    <span class="time-posting">${time()}</span>
+                    <i class="fas fa-globe"></i>
+                </div>`)).appendTo(this.el) //jQuery
+                
+        // this.userPosting = document.createElement("div");
+        // this.userPosting.classList.add("user-posting");
+        // this.userPosting.innerHTML = 
+        //     `<img src="${user.profilePic}" alt="${user.fullname} Profile" class="post-profile">
+        //     <div class="user-posting-name-time">
+        //         <span class="username-posting"> ${user.fullname}</span>
+        //         <span class="time-posting">${time()}</span>
+        //         <i class="fas fa-globe"></i>
+        //     </div>`;
+        // this.el.appendChild(this.userPosting);
 
         this.textEl = document.createElement("span");
         this.textEl.classList.add("post-content");
@@ -150,7 +160,9 @@ class Body{
         this.userOptions = new UserOptions(this.el, this.textEl);
         this.userOptions.removeButton(this.el);
 
-        this.userPosting.appendChild(this.userOptions.userOptions);
+        this.userPosting.append(this.userOptions.userOptions); //jQuery
+
+        // this.userPosting.appendChild(this.userOptions.userOptions);
         this.el.appendChild(this.textEl);
    
     };
@@ -182,6 +194,7 @@ class UserOptions{
 
         this.delete.addEventListener('click', () => this.remove(boxToDelete));
     }
+
     remove(boxToDelete) {
         boxToDelete.parentNode.removeChild(boxToDelete);
     };

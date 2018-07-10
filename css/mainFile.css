@@ -721,16 +721,8 @@ input[type="radio"]:checked + .pic {
   background-color: #FFFFFF;
   border: 1px solid #dddfe2;
   border-radius: 4px;
-  transition: all 0.3s linear;
   position: relative;
   z-index: 2;
-}
-
-/* line 15, C:/Users/ASUS ROG/FED/Facebook project/scss/components/_posts.scss */
-.new-post:focus-within {
-  transform: scale(1.2);
-  transition: all 0.5s linear;
-  z-index: 3;
 }
 
 /* line 22, C:/Users/ASUS ROG/FED/Facebook project/scss/components/_posts.scss */

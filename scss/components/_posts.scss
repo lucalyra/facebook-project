@@ -7,17 +7,17 @@
     background-color:#FFFFFF;
     border: 1px solid $border-color;
     border-radius: 4px;
-    transition: all 0.3s linear; 
+    // transition: all 0.3s linear; 
     position:relative;
     z-index: 2;
 
     
-    &:focus-within{
-        transform:scale(1.2);
-        transition: all 0.5s linear; 
-        z-index: 3;
+    // &:focus-within{
+    //     transform:scale(1.2);
+    //     transition: all 0.5s linear; 
+    //     z-index: 3;
  
-    };
+    // };
 
     .post-cont{
         display:flex;
