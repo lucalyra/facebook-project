@@ -624,31 +624,6 @@ class serverPost {
     }
     
 }
-class UserService{
-    getUser(id){
-        return fetch('http://127.0.0.1:3000/users/' + id)
-            .then(res => res.json())
-            .then(info => new CatchUser(info))
-            .then(user => this.storageStringify(user))
-            .catch(() => JSON.parse(localStorage.getItem("user")))
-    }
-    storageStringify(user){
-        localStorage.setItem("user", JSON.stringify(user))
-    }
-}
-
-class PostService{
-    getLastPost(userId) {
-        return fetch(`http://127.0.0.1:3000/posts/${userId}`)
-            .then(res => res.json())
-            .then(posts => posts[0].body)
-            .then(post => this.storageStringify(post))
-            .catch(() => JSON.parse(localStorage.getItem("post")))
-    }
-    storageStringify(post){
-        localStorage.setItem("post", JSON.stringify(post))
-    }
-}
 class CatchUser{
     constructor(user){
         this.fullname = user.name;
