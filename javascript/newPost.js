@@ -586,16 +586,16 @@ class Reply{
 
 
 //fetch user and posts from /server/server.js
-fetch('http://127.0.0.1:3000')
-  .then((response) => {
-    response.json()
-      .then((res) => {
-        res.posts.forEach(elm => {
-            let user = new User(elm.firstName, elm.lastName, elm.profile)
-            new serverPost(elm.message, user, elm.likes, elm.time).createPost();
-        });
-      });
-  });
+// fetch('http://127.0.0.1:3000/')
+//   .then((response) => {
+//     response.json()
+//       .then((res) => {
+//         res.posts.forEach(elm => {
+//             let user = new User(elm.firstName, elm.lastName, elm.profile)
+//             new serverPost(elm.message, user, elm.likes, elm.time).createPost();
+//         });
+//       });
+//   });
 
 
 //create post from server
@@ -626,7 +626,7 @@ class serverPost {
 }
 class UserService{
     getUser(id){
-        return fetch('https://jsonplaceholder.typicode.com/users/' + id)
+        return fetch('http://127.0.0.1:3000/users/' + id)
             .then(res => res.json())
             .then(info => new CatchUser(info))
             .then(user => this.storageStringify(user))
@@ -638,8 +638,8 @@ class UserService{
 }
 
 class PostService{
-    getPosts(userId) {
-        return fetch('https://jsonplaceholder.typicode.com/posts/?userId=' + userId)
+    getLastPost(userId) {
+        return fetch(`http://127.0.0.1:3000/posts/${userId}`)
             .then(res => res.json())
             .then(posts => posts[0].body)
             .then(post => this.storageStringify(post))
@@ -652,7 +652,10 @@ class PostService{
 class CatchUser{
     constructor(user){
         this.fullname = user.name;
-        this.profilePic = "pic/giraffe.jpg";
+        this.profilePic = user.profilePic;
+        this.id = user.userId;
+        this.username = user.username;
+        this.email = user.email;
     }
 }
 
@@ -673,7 +676,7 @@ class FetchPost{
 
     fetchPost(){
         postService
-            .getPosts(this.userId)
+            .getLastPost(this.userId,)
             .then(this.newPost())
     }
 
@@ -683,4 +686,4 @@ class FetchPost{
 }
 
 
-let create = new FetchPost(10)
+let create = new FetchPost(2)

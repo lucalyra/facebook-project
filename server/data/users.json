@@ -1,9 +1,17 @@
+
 [
     {
-      "userId": 1,
+        "userId": 1,
+        "name": "Lucas Lyra",
+        "username": "lucalyra",
+        "email": "lucalyra@gmail.com",
+        "profilePic": "pic/giraffe.jpg"
+    },
+    {
+      "userId": 2,
       "name": "Leanne Graham",
-      "username": "Bret",
+      "username": "bret",
       "email": "Sincere@april.biz",
-      "phone": "1-770-736-8031 x56442"
+      "profilePic": "pic/fox.jpg"
     }
 ]
