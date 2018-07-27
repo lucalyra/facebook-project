@@ -8,7 +8,6 @@ class Login{
     this.loginButton()
     this.loginPic()
     }
-
     loginButton(){
         this.button.addEventListener("click", () =>{
             this.firstName = document.querySelector("#firstName");

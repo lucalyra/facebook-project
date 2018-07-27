@@ -1746,53 +1746,7 @@ body {
 }
 
 /* line 1, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
-.container {
-  background-color: #3b5a96;
-  width: 100%;
-  height: 100%;
-  font-family: 'Roboto', sans-serif;
-}
-
-/* line 7, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  top: 35%;
-}
-
-/* line 16, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
-.facebook-logo {
-  position: absolute;
-  top: -130px;
-  width: 300px;
-  margin: 10px 0;
-}
-
-/* line 22, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
-.login-box {
-  display: flex;
-  position: relative;
-  min-width: 430px;
-  max-width: 550px;
-  width: 50%;
-  flex-direction: column;
-}
-
-/* line 29, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
-.login-box .login-info {
-  height: 23px;
-  padding: 3px 5px;
-  border-radius: 3px;
-  border: 0px solid black;
-  margin: 5px 0;
-}
-
-/* line 38, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
-.login-button {
-  background-color: #486db3;
+.login-button, .signup-button {
   padding: 8px;
   margin: 5px 0px;
   text-align: center;
@@ -1802,31 +1756,91 @@ body {
   cursor: pointer;
 }
 
-/* line 48, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
-.login-button:hover {
-  background-color: #354f82;
+/* line 10, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.container {
+  background-color: #3b5a96;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* line 53, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+/* line 16, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  top: 35%;
+}
+
+/* line 25, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.facebook-logo {
+  position: absolute;
+  top: -130px;
+  width: 300px;
+  margin: 10px 0;
+}
+
+/* line 31, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.login-box {
+  display: flex;
+  position: relative;
+  min-width: 430px;
+  max-width: 550px;
+  width: 50%;
+  flex-direction: column;
+}
+
+/* line 38, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.login-box .login-info {
+  height: 23px;
+  padding: 3px 5px;
+  border-radius: 3px;
+  border: 0px solid black;
+  margin: 5px 0;
+}
+
+/* line 47, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.login-button {
+  background-color: #486db3;
+}
+
+/* line 51, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.login-button:hover {
+  background-color: #4466a8;
+}
+
+/* line 57, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.signup-button {
+  background-color: #01c201;
+}
+
+/* line 61, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+.signup-button:hover {
+  background-color: #01b301;
+}
+
+/* line 65, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
 .login-pic-options {
   display: flex;
   justify-content: space-around;
   margin: 10px 0;
 }
 
-/* line 58, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+/* line 70, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
 .login-pic-options input[type="radio"] {
   visibility: hidden;
   position: absolute;
 }
 
-/* line 62, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+/* line 74, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
 .login-pic-options input[type="radio"]:checked + .pic {
   border: 2px #ffffff solid;
   box-sizing: border-box;
 }
 
-/* line 68, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
+/* line 80, C:/Users/ASUS ROG/FED/Facebook project/scss/pages/_loginStyle.scss */
 .login-pic-options .pic {
   height: 71px;
   border: 2px solid transparent;

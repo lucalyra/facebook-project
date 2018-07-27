@@ -1,3 +1,12 @@
+%button{
+    padding: 8px;
+    margin:5px 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
 .container{
     background-color:#3b5a96;
     width: 100%;
@@ -37,18 +46,21 @@
 }
 .login-button{
     background-color: #486db3;
-    padding: 8px;
-    margin:5px 0px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    color: white;
-    cursor: pointer;
+    @extend %button;
 
     &:hover{
-        background-color:#354f82;
+        background-color: darken(#486db3, 3%)
     }
 
+}
+
+.signup-button{
+    background-color: #01c201;
+    @extend %button;
+
+    &:hover{
+        background-color: darken(#01c201, 3%)
+    }
 }
 .login-pic-options{
     display: flex;
@@ -72,3 +84,4 @@
         box-sizing: border-box;
     }
 }
+
