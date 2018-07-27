@@ -624,15 +624,7 @@ class serverPost {
     }
     
 }
-class CatchUser{
-    constructor(user){
-        this.fullname = user.name;
-        this.profilePic = user.profilePic;
-        this.id = user.userId;
-        this.username = user.username;
-        this.email = user.email;
-    }
-}
+
 
 let userService = new UserService;
 let postService = new PostService;
@@ -645,7 +637,7 @@ class FetchPost{
 
     fetchUser(){
         userService
-            .getUser(this.userId)
+            .getUserById(this.userId)
             .then(() => this.fetchPost())
     }
 

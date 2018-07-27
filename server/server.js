@@ -16,6 +16,7 @@ app.get('/users/:userId', (req, res) =>{
     const user = users.find(user => user.userId == req.params.userId);
     res.json(user);
 })
+
 //get all posts
 app.get('/posts', (req, res) => res.json(pots))
 //get all posts by userId

@@ -12,8 +12,8 @@ class Login{
         this.button.addEventListener("click", () =>{
             this.firstName = document.querySelector("#firstName");
             this.lastName = document.querySelector("#lastName");
-            // window.localStorage.setItem('firstName', this.firstName.value);
-            // window.localStorage.setItem('lastName', this.lastName.value);
+            window.localStorage.setItem('firstName', this.firstName.value);
+            window.localStorage.setItem('lastName', this.lastName.value);
             this.newUser();
             this.login();
         })
