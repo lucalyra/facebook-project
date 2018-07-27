@@ -1,2 +1,4 @@
 .code-workspace
 scss/
+package-lock.json
+node_modules/
